@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>New Arrivals — WILD CLOTHING</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* Page-level adjustments for sub-pages */
+  .header.header--fixed { position: fixed !important; transform: translateX(-50%) !important; top: 0 !important; left: 50% !important; }
+  .content { padding-top: calc(var(--header-height) + var(--safe-top) + 16px); }
+  .page-title { padding: 8px 16px 4px; font-size: 1.05rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text); }
+  .page-sub { padding: 0 16px 14px; font-size: .78rem; color: var(--color-muted); letter-spacing: .5px; }
+  .footer-section { padding: 28px 18px calc(var(--bottom-nav-height) + 24px); border-top: 1px solid var(--color-border); margin-top: 28px; background: var(--color-bg); text-align: center; }
+  .footer-section h4 { font-size: .82rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; color: var(--color-text); }
+  .footer-section p { font-size: .72rem; color: var(--color-muted); line-height: 1.6; margin-bottom: 14px; }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-bottom: 14px; }
+  .footer-links a { font-size: .72rem; color: var(--color-text); text-decoration: none; letter-spacing: .5px; }
+  .footer-copy { font-size: .65rem; color: var(--color-muted); letter-spacing: 1px; }
+</style>
+
+<style>
+  .na-list-section { padding: 4px 12px 8px; }
+  .na-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .na-list .bs-card { width: 100%; cursor: pointer; }
+  .na-list .bs-imgwrap { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 12px; background: #f5f5f5; }
+  .na-list .bs-img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .na-list .bs-card:hover .bs-img { transform: scale(1.03); }
+  .na-list .bs-name { margin: 10px 4px 2px; font-size: .85rem; font-weight: 600; color: var(--color-text); letter-spacing: .3px; }
+  .na-list .bs-price { margin: 0 4px 4px; font-size: .8rem; color: var(--color-muted); font-weight: 500; }
+  .na-list .bs-wish { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.92); border: none; display:flex; align-items:center; justify-content:center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+  .na-list .bs-wish svg { width: 16px; height: 16px; fill: none; stroke: var(--color-text); stroke-width: 2; }
+  .na-list .bs-wish.active svg { fill: #e53935; stroke: #e53935; }
+  .na-list .bs-bag-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(transparent, rgba(0,0,0,.7)); }
+  .na-list .bs-bag-btn { width: 100%; padding: 11px; border: none; border-radius: 6px; background: var(--color-text); color:#fff; font-family: inherit; font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
+  .na-list .bs-bag-btn:hover { background: #3d1f0e; }
+</style>
+</head>
+<body>
+<div class="app" data-shell="new" data-nav="home">
+  <main class="content">
+    <h1 class="page-title">New Arrivals</h1>
+    <p class="page-sub">Fresh drops, curated for you.</p>
+<section class="section na-list-section">
+  <div class="na-list">
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/padded-jacket-with-hood-4','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Gemini_Generated_Image_3iahk53iahk53iah.png?v=1776745471" alt="Jacket">
+                                      <button class="bs-wish" data-pid="1001" onclick="event.stopPropagation();mwToggleWish(1001,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1001)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Padded Jacket</p>
+                                  <p class="bs-price">419 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/printed-patch-hoodie-1','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/IDENTITY-OVERSIZE-HOODIE-GRIS-C.webp?v=1773242598" alt="Hoodie">
+                                      <button class="bs-wish" data-pid="1002" onclick="event.stopPropagation();mwToggleWish(1002,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1002)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Patch Hoodie</p>
+                                  <p class="bs-price">249 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/relaxed-fit-cotton-shirt-6','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---KAKI.webp?v=1776114505" alt="Shirt">
+                                      <button class="bs-wish" data-pid="1003" onclick="event.stopPropagation();mwToggleWish(1003,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1003)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Cotton Shirt</p>
+                                  <p class="bs-price">199 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/ov-black-sunglasses','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-G15-89237-BLACK1.webp?v=1776173679" alt="Sunglasses">
+                                      <button class="bs-wish" data-pid="1004" onclick="event.stopPropagation();mwToggleWish(1004,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1004)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Black Shades</p>
+                                  <p class="bs-price">79 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/embroidered-oversize-hoodie-1','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/UNSHAKEN-OV-HOODIE--GRIS-C.webp?v=1770840229" alt="Hoodie">
+                                      <button class="bs-wish" data-pid="1005" onclick="event.stopPropagation();mwToggleWish(1005,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1005)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Oversize Hoodie</p>
+                                  <p class="bs-price">240 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/printed-oversize-sweatshirt-4','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/OXFORD-OV-SWEATSHIRT---L-GRIS.webp?v=1772899704" alt="Sweatshirt">
+                                      <button class="bs-wish" data-pid="1006" onclick="event.stopPropagation();mwToggleWish(1006,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1006)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">OV Sweatshirt</p>
+                                  <p class="bs-price">285 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/oversized-premium-t-shirt','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/NO-OFF-BOXY-FIT-T-SHIRT-WHITE_f7399207-fad4-43f6-9aad-e8f928061d34.webp?v=1775856241" alt="T-Shirt">
+                                      <button class="bs-wish" data-pid="1007" onclick="event.stopPropagation();mwToggleWish(1007,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1007)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Premium Tee</p>
+                                  <p class="bs-price">150 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/fitted-cargo-pants','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/127bd50d-83ce-4307-a8d7-5c00663c7a04.jpg?v=1763669587" alt="Cargo">
+                                      <button class="bs-wish" data-pid="1008" onclick="event.stopPropagation();mwToggleWish(1008,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1008)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Cargo Pants</p>
+                                  <p class="bs-price">319 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/puffer-jacket-with-a-high-neck','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/0372050371700-A7M.webp?v=1771859239" alt="Puffer">
+                                      <button class="bs-wish" data-pid="1009" onclick="event.stopPropagation();mwToggleWish(1009,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1009)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Puffer High Neck</p>
+                                  <p class="bs-price">449 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/aviator-jacket','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jackjones-jornorrebroworkerjacket-beige_6.webp?v=1771172064" alt="Aviator">
+                                      <button class="bs-wish" data-pid="1010" onclick="event.stopPropagation();mwToggleWish(1010,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1010)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Aviator Jacket</p>
+                                  <p class="bs-price">479 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/denim-jacket-with-pockets','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/org_3.jpg?v=1768673110" alt="Denim">
+                                      <button class="bs-wish" data-pid="1011" onclick="event.stopPropagation();mwToggleWish(1011,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1011)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Denim Jacket</p>
+                                  <p class="bs-price">419 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/faux-leather-jacket-1','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/71be038f-d0f3-41c5-846a-4a59d15ed59b.jpg?v=1760299697" alt="Leather">
+                                      <button class="bs-wish" data-pid="1012" onclick="event.stopPropagation();mwToggleWish(1012,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1012)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Leather Jacket</p>
+                                  <p class="bs-price">370 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/parka-in-contrast-faux-shearling-fabric','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07711512450-A7M.webp?v=1738867301" alt="Parka">
+                                      <button class="bs-wish" data-pid="1013" onclick="event.stopPropagation();mwToggleWish(1013,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1013)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Parka Shearling</p>
+                                  <p class="bs-price">399 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/raincoat-with-hood','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07711550711-A1M.webp?v=1769782780" alt="Raincoat">
+                                      <button class="bs-wish" data-pid="1014" onclick="event.stopPropagation();mwToggleWish(1014,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1014)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Raincoat Hood</p>
+                                  <p class="bs-price">379 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/jack-jones-jcoreflex-bomber-jacket','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jack-jones-reflex-bomber-jacket-12278576-poseidon.jpg?v=1759092006" alt="Bomber">
+                                      <button class="bs-wish" data-pid="1015" onclick="event.stopPropagation();mwToggleWish(1015,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1015)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Bomber Jacket</p>
+                                  <p class="bs-price">449 DH</p>
+                              </div>
+    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/puffer-1','_blank')">
+                                  <div class="bs-imgwrap">
+                                      <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/01900226300-p1.jpg?v=1734013157" alt="Puffer">
+                                      <button class="bs-wish" data-pid="1016" onclick="event.stopPropagation();mwToggleWish(1016,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                      <div class="bs-bag-overlay">
+                                          <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1016)">Add to Bag</button>
+                                      </div>
+                                  </div>
+                                  <p class="bs-name">Puffer Jacket</p>
+                                  <p class="bs-price">469 DH</p>
+                              </div>
+  </div>
+</section>
+
+<footer class="footer-section">
+  <h4>WILD CLOTHING</h4>
+  <p>Finest garments by authentic brands.<br>Wear your identity.</p>
+  <div class="footer-links">
+    <a href="new-arrivals.html">New Arrivals</a>
+    <a href="clothing.html">Clothing</a>
+    <a href="login.html">Account</a>
+    <a href="index.html">Home</a>
+  </div>
+  <div class="footer-copy">© 2026 WILD CLOTHING</div>
+</footer>
+  </main>
+</div>
+<script src="assets/products.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/shell.js"></script>
+<script>
+  // Stub interactions used by carousel cards
+  window.mwAddToBag = window.mwAddToBag || function(){};
+  window.mwToggleWish = window.mwToggleWish || function(_,el){ if(el) el.classList.toggle('active'); };
+</script>
+</body>
+</html>

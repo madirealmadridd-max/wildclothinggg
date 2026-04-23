@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop — WILD CLOTHING</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+    <style>
+      .shop-page {
+        padding-top: calc(var(--header-height) + 8px);
+        padding-bottom: calc(var(--bottom-nav-height) + 24px);
+      }
+      .shop-hero {
+        padding: 16px 16px 8px;
+        text-align: center;
+      }
+      .shop-hero h1 {
+        font-size: 1.4rem;
+        letter-spacing: 1.5px;
+        margin: 0 0 4px;
+        color: var(--color-text);
+      }
+      .shop-hero p {
+        font-size: 0.82rem;
+        color: var(--color-muted);
+        margin: 0;
+      }
+      .shop-section {
+        margin: 18px 0;
+      }
+      .shop-section__head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        padding: 0 16px 10px;
+      }
+      .shop-section__title {
+        font-size: 1rem;
+        letter-spacing: 1.2px;
+        font-weight: 600;
+        color: var(--color-text);
+        margin: 0;
+      }
+      .shop-section__more {
+        font-size: 0.72rem;
+        color: var(--color-muted);
+        text-decoration: none;
+        letter-spacing: 0.6px;
+      }
+
+      .ac-wrap {
+        position: relative;
+        overflow: hidden;
+        padding: 0 12px;
+      }
+      .ac-track {
+        display: flex;
+        transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+      }
+      .ac-slide {
+        flex: 0 0 100%;
+        padding: 0 4px;
+        box-sizing: border-box;
+      }
+      .ac-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .ac-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .ac-imgwrap {
+        position: relative;
+        aspect-ratio: 4/5;
+        overflow: hidden;
+        background: #f5f5f5;
+      }
+      .ac-imgwrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .ac-card:hover .ac-imgwrap img {
+        transform: scale(1.04);
+      }
+      .ac-wish {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        padding: 0;
+      }
+      .ac-wish svg {
+        width: 16px;
+        height: 16px;
+        stroke: #291409;
+        fill: none;
+        stroke-width: 2;
+      }
+      .ac-wish.active svg {
+        fill: #291409;
+      }
+      .ac-bag-overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 6px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+      .ac-card:hover .ac-bag-overlay {
+        opacity: 1;
+      }
+      .ac-bag-btn {
+        width: 100%;
+        padding: 8px;
+        background: #fff;
+        color: #291409;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+      }
+      .ac-info {
+        padding: 8px 6px 6px;
+      }
+      .ac-name {
+        margin: 0 0 2px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--color-text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .ac-price {
+        margin: 0;
+        font-size: 0.72rem;
+        color: var(--color-muted);
+        font-weight: 500;
+      }
+
+      .ac-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .ac-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(41, 20, 9, 0.2);
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      .ac-dot.active {
+        background: #291409;
+        width: 18px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app" data-shell="shop" data-nav="shop">
+      <main class="page shop-page">
+        <section class="shop-hero" id="perfumes-anchor-skip">
+          <h1>SHOP</h1>
+          <p>Browse every collection at a glance.</p>
+        </section>
+
+        <div id="shopRoot"></div>
+
+        <footer class="footer footer--simple" style="margin-top: 24px">
+          <a href="login.html" class="footer-link">Account</a>
+          <a href="cart.html" class="footer-link">Cart</a>
+          <div class="footer-copy">© 2026 WILD CLOTHING</div>
+        </footer>
+      </main>
+    </div>
+
+    <script src="assets/products.js"></script>
+    <script src="assets/store.js"></script>
+    <script src="assets/shell.js"></script>
+    <script>
+      const SHOP_SECTIONS = [
+        {
+          id: "outerwear",
+          title: "OUTERWEAR",
+          filter: (p) =>
+            p.cat === "clothing" && (p.sub === "jackets" || p.sub === "gilet"),
+        },
+        { id: "hoodies", title: "HOODIES", filter: (p) => p.sub === "hoodies" },
+        {
+          id: "sweatshirts",
+          title: "SWEATSHIRTS",
+          filter: (p) => p.sub === "sweatshirts",
+        },
+        {
+          id: "tshirts",
+          title: "T-SHIRTS",
+          filter: (p) => p.sub === "t-shirt" || p.sub === "knitted-tee-shirt",
+        },
+        { id: "shirts", title: "SHIRTS", filter: (p) => p.sub === "shirts" },
+        {
+          id: "knitwear",
+          title: "KNITWEAR",
+          filter: (p) => p.sub === "sweaters",
+        },
+        {
+          id: "sunglasses",
+          title: "SUNGLASSES",
+          filter: (p) => p.cat === "sunglasses",
+        },
+        {
+          id: "perfumes",
+          title: "PARFUM COMPLET",
+          filter: (p) => p.sub === "parfum-complet",
+        },
+        {
+          id: "french-avenue",
+          title: "FRENCH AVENUE",
+          filter: (p) => p.sub === "french-avenue",
+        },
+      ];
+
+      const ITEMS_PER_SLIDE = 4; // 2 rows × 2 cols ... but here we use 2 cards per slide for compact horizontal carousel
+      const PER_SLIDE = 2;
+
+      function buildCard(p) {
+        const safe = (p.name || "").replace(/"/g, "&quot;");
+        return `
+      <div class="ac-card" onclick="window.open('${p.link}','_blank')">
+        <div class="ac-imgwrap">
+          <img src="${p.img}" alt="${safe}" loading="lazy" onerror="this.style.background='#eee'">
+          <button class="ac-wish" data-pid="${p.id}" onclick="event.stopPropagation();mwToggleWish(${p.id},this)" aria-label="Wishlist">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <div class="ac-bag-overlay">
+            <button class="ac-bag-btn" onclick="event.stopPropagation();mwAddToBag(${p.id})">Add to Bag</button>
+          </div>
+        </div>
+        <div class="ac-info">
+          <p class="ac-name">${p.name}</p>
+          <p class="ac-price">${p.price}</p>
+        </div>
+      </div>`;
+      }
+
+      function buildSection(sec, items) {
+        if (!items.length) return "";
+        const slides = [];
+        for (let i = 0; i < items.length; i += PER_SLIDE) {
+          const chunk = items.slice(i, i + PER_SLIDE);
+          slides.push(
+            `<div class="ac-slide"><div class="ac-grid">${chunk.map(buildCard).join("")}</div></div>`,
+          );
+        }
+        const dots = slides
+          .map(
+            (_, i) =>
+              `<span class="ac-dot${i === 0 ? " active" : ""}" data-dot="${i}"></span>`,
+          )
+          .join("");
+        const more =
+          sec.id === "outerwear"
+            ? "clothing.html"
+            : sec.id === "sunglasses"
+              ? "clothing.html"
+              : sec.id === "perfumes" || sec.id === "french-avenue"
+                ? "#"
+                : "clothing.html";
+        return `
+      <section class="shop-section" id="${sec.id}">
+        <div class="shop-section__head">
+          <h2 class="shop-section__title">${sec.title}</h2>
+          <a href="${more}" class="shop-section__more">View all →</a>
+        </div>
+        <div class="ac-wrap" data-carousel="${sec.id}">
+          <div class="ac-track">${slides.join("")}</div>
+        </div>
+        <div class="ac-dots" data-dots-for="${sec.id}">${dots}</div>
+      </section>`;
+      }
+
+      function initCarousel(wrap) {
+        const track = wrap.querySelector(".ac-track");
+        const slides = track.children;
+        const total = slides.length;
+        if (total <= 1) return;
+        const id = wrap.getAttribute("data-carousel");
+        const dotsRow = document.querySelector(`[data-dots-for="${id}"]`);
+        const dots = dotsRow ? dotsRow.querySelectorAll(".ac-dot") : [];
+        let idx = 0,
+          paused = false;
+        const go = (i) => {
+          idx = (i + total) % total;
+          track.style.transform = `translateX(-${idx * 100}%)`;
+          dots.forEach((d, j) => d.classList.toggle("active", j === idx));
+        };
+        dots.forEach((d, j) =>
+          d.addEventListener("click", () => {
+            go(j);
+            reset();
+          }),
+        );
+        let timer = setInterval(() => {
+          if (!paused) go(idx + 1);
+        }, 3500);
+        function reset() {
+          clearInterval(timer);
+          timer = setInterval(() => {
+            if (!paused) go(idx + 1);
+          }, 3500);
+        }
+        wrap.addEventListener("mouseenter", () => (paused = true));
+        wrap.addEventListener("mouseleave", () => (paused = false));
+        // Touch swipe
+        let sx = 0,
+          dx = 0;
+        wrap.addEventListener(
+          "touchstart",
+          (e) => {
+            sx = e.touches[0].clientX;
+            dx = 0;
+            paused = true;
+          },
+          { passive: true },
+        );
+        wrap.addEventListener(
+          "touchmove",
+          (e) => {
+            dx = e.touches[0].clientX - sx;
+          },
+          { passive: true },
+        );
+        wrap.addEventListener("touchend", () => {
+          if (Math.abs(dx) > 40) {
+            go(idx + (dx < 0 ? 1 : -1));
+            reset();
+          }
+          paused = false;
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const root = document.getElementById("shopRoot");
+        const sections = SHOP_SECTIONS.map((sec) =>
+          buildSection(sec, MW_PRODUCTS.filter(sec.filter)),
+        ).join("");
+        root.innerHTML = sections;
+        document.querySelectorAll("[data-carousel]").forEach(initCarousel);
+        // Anchor scroll for #perfumes
+        if (location.hash === "#perfumes") {
+          setTimeout(
+            () =>
+              document
+                .getElementById("perfumes")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" }),
+            200,
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

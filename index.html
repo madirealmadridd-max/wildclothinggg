@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WILD CLOTHING — Mobile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__left">
+            <button class="icon-btn" id="menuBtn" aria-label="Open menu">
+                <svg viewBox="0 0 24 24">
+                    <line x1="4" y1="6" x2="20" y2="6"/>
+                    <line x1="4" y1="12" x2="20" y2="12"/>
+                    <line x1="4" y1="18" x2="20" y2="18"/>
+                </svg>
+            </button>
+        </div>
+
+        <a href="#" class="header__logo">WILD CLOTHING</a>
+
+        <div class="header__right">
+            <button class="icon-btn icon-btn--wish" aria-label="Wishlist" id="wishBtn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                <span class="cart-badge wish-badge" id="wishBadge" style="display:none">0</span>
+            </button>
+            <button class="icon-btn icon-btn--cart" aria-label="Cart" id="bagBtn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu Drawer -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <aside class="menu-drawer" id="menuDrawer">
+        <div class="menu-drawer__header">
+            <span class="menu-drawer__title">Menu</span>
+            <button class="menu-drawer__close" id="closeMenu" aria-label="Close menu">&times;</button>
+        </div>
+        <nav class="menu-drawer__nav">
+            <a href="new-arrivals.html" class="menu-drawer__item">
+                New Arrivals
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="clothing.html" class="menu-drawer__item">
+                Clothing
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="#" class="menu-drawer__item">
+                Perfumes
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="#" class="menu-drawer__item">
+                Accessories
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="#" class="menu-drawer__item">
+                Sale
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+        </nav>
+        <div class="menu-drawer__footer">
+            <a href="login.html" class="menu-drawer__footer-btn" style="text-decoration:none">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Account
+            </a>
+            <button class="menu-drawer__footer-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                Wishlist
+            </button>
+        </div>
+    </aside>
+
+    
+      <!-- Wishlist Drawer (right side) -->
+      <div class="bag-overlay" id="wishOverlay"></div>
+      <aside class="bag-drawer" id="wishDrawer">
+          <div class="menu-drawer__header">
+              <span class="menu-drawer__title">Wishlist (<span id="wishHeaderCount">0</span>)</span>
+              <button class="menu-drawer__close" id="closeWish" aria-label="Close wishlist">&times;</button>
+          </div>
+          <div class="bag-body" id="wishBody"></div>
+      </aside>
+
+      <!-- Bag Drawer (right side) -->
+    <div class="bag-overlay" id="bagOverlay"></div>
+    <aside class="bag-drawer" id="bagDrawer">
+        <div class="menu-drawer__header">
+            <span class="menu-drawer__title">Your Bag (<span id="bagCount">0</span>)</span>
+            <button class="menu-drawer__close" id="closeBag" aria-label="Close bag">&times;</button>
+        </div>
+        <div class="bag-body" id="bagBody">
+            <div class="bag-empty">
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#bbb" stroke-width="1.5">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <p>Your bag is empty</p>
+            </div>
+        </div>
+        <div class="bag-footer" id="bagFooter" style="display:none">
+            <div class="bag-total">
+                <span>Total</span>
+                <span id="bagTotal">0.00 DH</span>
+            </div>
+            <button class="bag-checkout-btn" onclick="window.location.href='cart.html#checkout'">Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="bottom-nav__item bottom-nav__item--active">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            Home
+        </a>
+        <a href="#" class="bottom-nav__item">
+            <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            Shop
+        </a>
+        <a href="#" class="bottom-nav__item">
+            <svg viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            Wishlist
+        </a>
+        <a href="login.html" class="bottom-nav__item">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            Account
+        </a>
+    </nav>
+
+    <!-- Page Content -->
+    <main class="content">
+        <section class="hero-banner" aria-label="WILD CLOTHING hero">
+            <img
+                class="hero-banner__img"
+                src="https://cdn.shopify.com/s/files/1/0985/8000/5139/files/banner_mobile_version.png?v=1776882409"
+                alt="WILD CLOTHING banner"
+            >
+            <div class="hero-banner__scrim"></div>
+            <div class="hero-banner__content">
+                <h1 class="hero-banner__title">
+                    <span class="line-1">Style It</span>
+                    <span class="line-2">Your Way</span>
+                </h1>
+                <div class="hero-banner__bottom">
+                    <p class="hero-banner__sub">Finest garments by authentic brands. Clothing, perfumes &amp; accessories curated for those who wear their identity.</p>
+                    <div class="hero-banner__ctas">
+                        <button class="hero-cta hero-cta--primary" onclick="document.getElementById('new-arrivals')?.scrollIntoView({behavior:'smooth'})">Shop Now</button>
+                        <button class="hero-cta hero-cta--ghost" onclick="document.getElementById('new-arrivals')?.scrollIntoView({behavior:'smooth'})">New Arrivals</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="pills" id="mainPills">
+            <button class="pill pill--active" data-cat="new">New Arrivals</button>
+            <button class="pill" data-cat="perfumes">Perfumes</button>
+            <button class="pill" data-cat="sale">Sale</button>
+        </div>
+        <div class="pills sub-pills" id="perfumesSubPills" hidden>
+            <button class="pill pill--active" data-perfume="all">All Perfumes</button>
+            <button class="pill" data-perfume="decant">Decant</button>
+            <button class="pill" data-perfume="dupe">Dupe</button>
+            <button class="pill" data-perfume="zara">Zara Perfum</button>
+            <button class="pill" data-perfume="complet">Parfum Complet</button>
+            <button class="pill" data-perfume="nos">Nos Pack</button>
+            <button class="pill" data-perfume="deo">Men's Deodorant</button>
+            <button class="pill" data-perfume="french-avenue">French Avenue</button>
+        </div>
+        <div class="cat-empty" id="saleEmpty" hidden>Not available</div>
+
+        <!-- NEW ARRIVALS CAROUSEL (no title) -->
+        <section class="section new-arrivals-section" id="new-arrivals">
+            <div class="carousel-wrapper">
+                <div class="bs-wrap">
+                    <!-- Navigation & Progress -->
+                    <div class="bs-header-arrows">
+                        <div class="bs-progress-dots" id="bsDots"></div>
+                        <div class="bs-arrow-group">
+                            <button class="bs-arrow bs-prev" onclick="bsMove(-1)">
+                                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                            </button>
+                            <button class="bs-arrow bs-next" onclick="bsMove(1)">
+                                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bs-slider-container" id="bsSliderContainer">
+                        <div class="bs-slider" id="bsSlider">
+                            
+                            <!-- SLIDE 1 -->
+                            <div class="bs-slide-page">
+                                <div class="bs-slide-grid">
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/padded-jacket-with-hood-4','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Gemini_Generated_Image_3iahk53iahk53iah.png?v=1776745471" alt="Jacket">
+                                              <button class="bs-wish" data-pid="1001" onclick="event.stopPropagation();mwToggleWish(1001,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1001)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Padded Jacket</p>
+                                          <p class="bs-price">419 DH</p>
+                                      </div>
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/printed-patch-hoodie-1','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/IDENTITY-OVERSIZE-HOODIE-GRIS-C.webp?v=1773242598" alt="Hoodie">
+                                              <button class="bs-wish" data-pid="1002" onclick="event.stopPropagation();mwToggleWish(1002,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1002)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Patch Hoodie</p>
+                                          <p class="bs-price">249 DH</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 2 -->
+                            <div class="bs-slide-page">
+                                <div class="bs-slide-grid">
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/relaxed-fit-cotton-shirt-6','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---KAKI.webp?v=1776114505" alt="Shirt">
+                                              <button class="bs-wish" data-pid="1003" onclick="event.stopPropagation();mwToggleWish(1003,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1003)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Cotton Shirt</p>
+                                          <p class="bs-price">199 DH</p>
+                                      </div>
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/ov-black-sunglasses','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-G15-89237-BLACK1.webp?v=1776173679" alt="Sunglasses">
+                                              <button class="bs-wish" data-pid="1004" onclick="event.stopPropagation();mwToggleWish(1004,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1004)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Black Shades</p>
+                                          <p class="bs-price">79 DH</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 3 -->
+                            <div class="bs-slide-page">
+                                <div class="bs-slide-grid">
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/embroidered-oversize-hoodie-1','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/UNSHAKEN-OV-HOODIE--GRIS-C.webp?v=1770840229" alt="Hoodie">
+                                              <button class="bs-wish" data-pid="1005" onclick="event.stopPropagation();mwToggleWish(1005,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1005)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Oversize Hoodie</p>
+                                          <p class="bs-price">240 DH</p>
+                                      </div>
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/printed-oversize-sweatshirt-4','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/OXFORD-OV-SWEATSHIRT---L-GRIS.webp?v=1772899704" alt="Sweatshirt">
+                                              <button class="bs-wish" data-pid="1006" onclick="event.stopPropagation();mwToggleWish(1006,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1006)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">OV Sweatshirt</p>
+                                          <p class="bs-price">285 DH</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 4 -->
+                            <div class="bs-slide-page">
+                                <div class="bs-slide-grid">
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/oversized-premium-t-shirt','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/NO-OFF-BOXY-FIT-T-SHIRT-WHITE_f7399207-fad4-43f6-9aad-e8f928061d34.webp?v=1775856241" alt="T-Shirt">
+                                              <button class="bs-wish" data-pid="1007" onclick="event.stopPropagation();mwToggleWish(1007,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1007)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Premium Tee</p>
+                                          <p class="bs-price">150 DH</p>
+                                      </div>
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/fitted-cargo-pants','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/127bd50d-83ce-4307-a8d7-5c00663c7a04.jpg?v=1763669587" alt="Cargo">
+                                              <button class="bs-wish" data-pid="1008" onclick="event.stopPropagation();mwToggleWish(1008,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1008)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Cargo Pants</p>
+                                          <p class="bs-price">319 DH</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 5 -->
+                            <div class="bs-slide-page">
+                                <div class="bs-slide-grid">
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/puffer-jacket-with-a-high-neck','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/0372050371700-A7M.webp?v=1771859239" alt="Puffer">
+                                              <button class="bs-wish" data-pid="1009" onclick="event.stopPropagation();mwToggleWish(1009,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1009)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Puffer High Neck</p>
+                                          <p class="bs-price">449 DH</p>
+                                      </div>
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/aviator-jacket','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jackjones-jornorrebroworkerjacket-beige_6.webp?v=1771172064" alt="Aviator">
+                                              <button class="bs-wish" data-pid="1010" onclick="event.stopPropagation();mwToggleWish(1010,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1010)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Aviator Jacket</p>
+                                          <p class="bs-price">479 DH</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 6 -->
+                            <div class="bs-slide-page">
+                                <div class="bs-slide-grid">
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/denim-jacket-with-pockets','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/org_3.jpg?v=1768673110" alt="Denim">
+                                              <button class="bs-wish" data-pid="1011" onclick="event.stopPropagation();mwToggleWish(1011,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1011)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Denim Jacket</p>
+                                          <p class="bs-price">419 DH</p>
+                                      </div>
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/faux-leather-jacket-1','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/71be038f-d0f3-41c5-846a-4a59d15ed59b.jpg?v=1760299697" alt="Leather">
+                                              <button class="bs-wish" data-pid="1012" onclick="event.stopPropagation();mwToggleWish(1012,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1012)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Leather Jacket</p>
+                                          <p class="bs-price">370 DH</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 7 -->
+                            <div class="bs-slide-page">
+                                <div class="bs-slide-grid">
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/parka-in-contrast-faux-shearling-fabric','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07711512450-A7M.webp?v=1738867301" alt="Parka">
+                                              <button class="bs-wish" data-pid="1013" onclick="event.stopPropagation();mwToggleWish(1013,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1013)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Parka Shearling</p>
+                                          <p class="bs-price">399 DH</p>
+                                      </div>
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/raincoat-with-hood','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07711550711-A1M.webp?v=1769782780" alt="Raincoat">
+                                              <button class="bs-wish" data-pid="1014" onclick="event.stopPropagation();mwToggleWish(1014,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1014)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Raincoat Hood</p>
+                                          <p class="bs-price">379 DH</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 8 -->
+                            <div class="bs-slide-page">
+                                <div class="bs-slide-grid">
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/jack-jones-jcoreflex-bomber-jacket','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jack-jones-reflex-bomber-jacket-12278576-poseidon.jpg?v=1759092006" alt="Bomber">
+                                              <button class="bs-wish" data-pid="1015" onclick="event.stopPropagation();mwToggleWish(1015,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1015)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Bomber Jacket</p>
+                                          <p class="bs-price">449 DH</p>
+                                      </div>
+                                    <div class="bs-card" onclick="window.open('https://mywildclothing.com/products/puffer-1','_blank')">
+                                          <div class="bs-imgwrap">
+                                              <img class="bs-img" src="https://cdn.shopify.com/s/files/1/0057/0425/3529/files/01900226300-p1.jpg?v=1734013157" alt="Puffer">
+                                              <button class="bs-wish" data-pid="1016" onclick="event.stopPropagation();mwToggleWish(1016,this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+                                              <div class="bs-bag-overlay">
+                                                  <button class="bs-bag-btn" onclick="event.stopPropagation();mwAddToBag(1016)">Add to Bag</button>
+                                              </div>
+                                          </div>
+                                          <p class="bs-name">Puffer Jacket</p>
+                                          <p class="bs-price">469 DH</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             PARFUM COMPLET — Sub-pill carousel (shown only when active)
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="section pc-section" id="pc-section" hidden>
+            <div class="carousel-wrapper">
+                <div class="bs-wrap">
+                    <div class="bs-header-arrows">
+                        <div class="bs-progress-dots" id="pcDots"></div>
+                        <div class="bs-arrow-group">
+                            <button class="bs-arrow pc-prev" type="button" onclick="pcMove(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+                            <button class="bs-arrow pc-next" type="button" onclick="pcMove(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                        </div>
+                    </div>
+                    <div class="bs-slider-container" id="pcContainer">
+                        <div class="bs-slider" id="pcSlider"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             FRENCH AVENUE — Sub-pill carousel (shown only when active)
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="section pc-section" id="fa-section" hidden>
+            <div class="carousel-wrapper">
+                <div class="bs-wrap">
+                    <div class="bs-header-arrows">
+                        <div class="bs-progress-dots" id="faDots"></div>
+                        <div class="bs-arrow-group">
+                            <button class="bs-arrow fa-prev" type="button" onclick="faMove(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+                            <button class="bs-arrow fa-next" type="button" onclick="faMove(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                        </div>
+                    </div>
+                    <div class="bs-slider-container" id="faContainer">
+                        <div class="bs-slider" id="faSlider"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             SHOP — Embedded product grid (under New Arrivals)
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="section" id="mw-shop-section">
+            <style>
+              .mw-shop * { margin:0; padding:0; box-sizing:border-box; }
+              .mw-shop {
+                font-family:'Rubik',system-ui,-apple-system,sans-serif;
+                color:#291409; width:100%; max-width:1400px; margin:0 auto;
+              }
+              .mw-shop a { text-decoration:none; color:inherit; }
+              .mw-shop img { display:block; max-width:100%; }
+              .mw-shop button { cursor:pointer; font-family:inherit; }
+
+              .mw-title {
+                text-align:center; font-size:1.5rem; font-weight:600;
+                letter-spacing:5px; text-transform:uppercase; margin:0 0 8px; color:#291409;
+              }
+              .mw-count {
+                text-align:center; font-size:.8rem; color:#666;
+                letter-spacing:1px; margin-bottom:24px;
+              }
+
+              .mw-filters {
+                display:flex; flex-direction:column; align-items:center; gap:10px;
+                padding:0 4px; margin-bottom:24px;
+              }
+              .mw-frow {
+                display:flex; justify-content:center; flex-wrap:wrap; gap:8px;
+                width:100%;
+              }
+              .mw-frow-sub {
+                padding-top:10px; border-top:1px solid rgba(0,0,0,0.06);
+                animation:mwFadeDown .3s ease;
+              }
+              @keyframes mwFadeDown {
+                from { opacity:0; transform:translateY(-6px); }
+                to   { opacity:1; transform:translateY(0); }
+              }
+              .mw-fbtn {
+                padding:7px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:40px;
+                background:transparent; color:#555; font-size:.72rem;
+                font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+                transition:all .35s cubic-bezier(.4,0,.2,1);
+              }
+              .mw-fbtn:hover { border-color:#291409; color:#291409; }
+              .mw-fbtn.active { background:#291409; border-color:#291409; color:#fff; }
+              .mw-fbtn:active { transform:scale(.95); }
+              .mw-fbtn-sm {
+                padding:5px 12px; font-size:.65rem; font-weight:500;
+                letter-spacing:1px; opacity:.95;
+              }
+
+              .mw-grid {
+                display:grid;
+                grid-template-columns:repeat(2, 1fr);
+                gap:12px; padding:0;
+                position:relative;
+                transition:opacity .35s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1);
+              }
+              .mw-grid.slide-out { opacity:0; transform:translateX(-40px); pointer-events:none; }
+              .mw-grid.slide-in  { opacity:0; transform:translateX(40px); }
+
+              .mw-card {
+                background:#fff; border-radius:10px; overflow:hidden;
+                border:1px solid rgba(0,0,0,0.08);
+                transition:all .3s ease; position:relative;
+              }
+              .mw-card:hover {
+                transform:translateY(-4px); border-color:rgba(0,0,0,0.18);
+                box-shadow:0 4px 24px rgba(0,0,0,0.08);
+              }
+              .mw-card a { display:block; }
+              .mw-imgwrap { position:relative; overflow:hidden; aspect-ratio:3/4; background:#f5f5f5; }
+              .mw-imgwrap img {
+                width:100%; height:100%; object-fit:cover; transition:transform .5s ease;
+              }
+              .mw-card:hover .mw-imgwrap img { transform:scale(1.05); }
+
+              .mw-wish {
+                position:absolute; top:10px; right:10px; z-index:5;
+                width:32px; height:32px; border-radius:50%;
+                background:rgba(255,255,255,0.9); backdrop-filter:blur(6px);
+                border:none; display:flex; align-items:center; justify-content:center;
+                transition:all .3s ease; box-shadow:0 2px 6px rgba(0,0,0,0.1);
+              }
+              .mw-wish:hover { background:#fff; }
+              .mw-wish svg { width:14px; height:14px; fill:none; stroke:#291409; stroke-width:2; }
+              .mw-wish.active svg { fill:#e53935; stroke:#e53935; }
+
+              .mw-bag-overlay {
+                position:absolute; bottom:0; left:0; right:0; padding:10px;
+                background:linear-gradient(transparent, rgba(0,0,0,0.75));
+                opacity:0; transform:translateY(10px); transition:all .3s ease;
+              }
+              .mw-card:hover .mw-bag-overlay { opacity:1; transform:translateY(0); }
+              .mw-bag-btn {
+                width:100%; padding:9px; border:none; border-radius:4px;
+                background:#291409; color:#fff; font-size:.7rem; font-weight:600;
+                letter-spacing:2px; text-transform:uppercase; transition:background .3s ease;
+              }
+              .mw-bag-btn:hover { background:#3d1f0e; }
+
+              .mw-info { padding:10px; }
+              .mw-name {
+                font-size:.72rem; font-weight:500; letter-spacing:.3px; color:#291409;
+                margin-bottom:5px; display:-webkit-box; -webkit-line-clamp:2;
+                -webkit-box-orient:vertical; overflow:hidden; min-height:2.4em;
+              }
+              .mw-price { font-size:.75rem; font-weight:600; color:#666; letter-spacing:1px; }
+
+              .mw-pages {
+                display:flex; justify-content:center; align-items:center; gap:6px;
+                margin-top:32px; padding:0 4px; flex-wrap:wrap;
+              }
+              .mw-pbtn {
+                min-width:36px; height:36px; border-radius:8px;
+                border:1px solid rgba(0,0,0,0.1); background:transparent;
+                color:#555; font-size:.85rem; font-weight:500;
+                display:flex; align-items:center; justify-content:center;
+                transition:all .3s cubic-bezier(.4,0,.2,1);
+              }
+              .mw-pbtn:hover { border-color:#291409; color:#291409; }
+              .mw-pbtn.active { background:#291409; border-color:#291409; color:#fff; }
+              .mw-pbtn.disabled { opacity:.3; pointer-events:none; }
+              .mw-pbtn:active { transform:scale(.92); }
+
+              .mw-empty {
+                grid-column:1/-1; text-align:center; padding:60px 20px;
+                color:#666; font-size:.9rem; letter-spacing:1px;
+              }
+
+              .mw-toast {
+                position:fixed; bottom:calc(var(--bottom-nav-height) + 16px); left:50%;
+                transform:translateX(-50%) translateY(20px);
+                background:#291409; color:#fff; padding:10px 28px; border-radius:8px;
+                font-size:.8rem; font-weight:500; letter-spacing:1px; z-index:9999;
+                transition:transform .4s ease, opacity .3s ease; pointer-events:none;
+                box-shadow:0 6px 24px rgba(41,20,9,0.35);
+                opacity:0; visibility:hidden;
+              }
+              .mw-toast.show { transform:translateX(-50%) translateY(0); opacity:1; visibility:visible; }
+
+              @keyframes mwSlideUp {
+                from { opacity:0; transform:translateY(30px) scale(0.97); }
+                to   { opacity:1; transform:translateY(0) scale(1); }
+              }
+              .mw-card { opacity:0; transform:translateY(30px) scale(0.97); }
+              .mw-card.mw-visible {
+                animation:mwSlideUp .5s cubic-bezier(.25,.46,.45,.94) forwards;
+              }
+            </style>
+
+            <div class="mw-shop">
+              <div class="mw-filters" id="mw-filters"></div>
+              <div class="mw-grid" id="mw-grid"></div>
+              <div class="mw-pages" id="mw-pages"></div>
+            </div>
+            <div class="mw-toast" id="mw-toast">Added to bag!</div>
+        </section>
+    </main>
+
+</div><!-- /app -->
+
+    <script>
+        // Menu Drawer Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const menuDrawer = document.getElementById('menuDrawer');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const header = document.getElementById('header');
+
+        function openMenu() {
+            menuDrawer.classList.add('menu-drawer--open');
+            menuOverlay.classList.add('menu-overlay--open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenuFn() {
+            menuDrawer.classList.remove('menu-drawer--open');
+            menuOverlay.classList.remove('menu-overlay--open');
+            document.body.style.overflow = '';
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFn);
+        menuOverlay.addEventListener('click', closeMenuFn);
+
+        // Swipe to close drawer
+        let touchStartX = 0;
+        menuDrawer.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+        menuDrawer.addEventListener('touchmove', (e) => {
+            const touchX = e.touches[0].clientX;
+            if (touchX - touchStartX < -50) closeMenuFn();
+        });
+
+        // Smart Header — smooth hide on scroll-down, smooth reveal on scroll-up
+        let lastScroll = window.pageYOffset;
+        let scrollTicking = false;
+        const SCROLL_THRESHOLD = 6;        // ignore tiny jitters
+        const HIDE_AFTER = 80;             // px scrolled before hiding starts
+        function onScrollFrame() {
+            const y = window.pageYOffset;
+            const dy = y - lastScroll;
+
+            // Subtle shadow + opacity once away from the very top
+            if (y > 4) header.classList.add('header--scrolled');
+            else header.classList.remove('header--scrolled');
+
+            if (Math.abs(dy) > SCROLL_THRESHOLD) {
+                if (dy > 0 && y > HIDE_AFTER) {
+                    /* header stays fixed; do not hide */
+                } else if (dy < 0) {
+                    header.classList.remove('header--hidden');  // scrolling up
+                }
+                lastScroll = y;
+            }
+            scrollTicking = false;
+        }
+        window.addEventListener('scroll', () => {
+            if (!scrollTicking) { requestAnimationFrame(onScrollFrame); scrollTicking = true; }
+        }, { passive: true });
+
+        // ================= CAROUSEL LOGIC =================
+        const slider = document.getElementById('bsSlider');
+        const sliderContainer = document.getElementById('bsSliderContainer');
+        const dotsContainer = document.getElementById('bsDots');
+        const prevBtn = document.querySelector('.bs-prev');
+        const nextBtn = document.querySelector('.bs-next');
+        
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.bs-slide-page');
+        const totalSlides = slides.length;
+
+        function initDots() {
+            dotsContainer.innerHTML = '';
+            for(let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'bs-dot ' + (i === 0 ? 'active' : '');
+                dot.onclick = () => bsGo(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateSlider() {
+            slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+            const dots = document.querySelectorAll('.bs-dot');
+            dots.forEach((d, i) => {
+                if (i === currentSlide) d.classList.add('active');
+                else d.classList.remove('active');
+            });
+            prevBtn.classList.toggle('disabled', currentSlide === 0);
+            nextBtn.classList.toggle('disabled', currentSlide === totalSlides - 1);
+        }
+
+        window.bsMove = function(dir) {
+            currentSlide += dir;
+            if(currentSlide < 0) currentSlide = 0;
+            if(currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+            updateSlider();
+        };
+
+        window.bsGo = function(index) {
+            currentSlide = index;
+            updateSlider();
+        };
+
+        initDots();
+        updateSlider();
+
+        // ================= TOUCH SWIPE FOR CAROUSEL =================
+        let startX = 0;
+        let startY = 0;
+        let isSwiping = false;
+
+        sliderContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isSwiping = true;
+        }, { passive: true });
+
+        sliderContainer.addEventListener('touchmove', (e) => {
+            if (!isSwiping) return;
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const diffX = startX - currentX;
+            const diffY = startY - currentY;
+
+            // If scrolling vertically more than horizontally, let the page scroll
+            if (Math.abs(diffY) > Math.abs(diffX)) {
+                isSwiping = false;
+                return;
+            }
+        }, { passive: true });
+
+        sliderContainer.addEventListener('touchend', (e) => {
+            if (!isSwiping) return;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            const threshold = 50; // minimum swipe distance in pixels
+
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    // Swiped left -> next slide
+                    bsMove(1);
+                } else {
+                    // Swiped right -> previous slide
+                    bsMove(-1);
+                }
+            }
+            isSwiping = false;
+        }, { passive: true });
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SHOP PRODUCT SECTION SCRIPT
+         ═══════════════════════════════════════════════════════════════ -->
+    <script>
+    const MW_PRODUCTS=[
+      {id:1,name:"Padded jacket with hood",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07700536800-A7M.webp?v=1772723145",link:"https://mywildclothing.com/products/padded-jacket-with-hood-4"},
+      {id:3,name:"LIMITED DENIM JACKET",price:"319.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/6e49269e-3885-4d15-b261-e722f92049f1.jpg?v=1772982806",link:"https://mywildclothing.com/products/limited-denim-jacket"},
+      {id:4,name:"LIMITED DENIM JACKET",price:"319.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/d770bf02-a192-4f08-abcb-dd06e5444bbd.jpg?v=1772982870",link:"https://mywildclothing.com/products/limited-denim-jacket-1"},
+      {id:5,name:"Puffer jacket with a high neck",price:"449.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/0372050371700-A7M.webp?v=1771859239",link:"https://mywildclothing.com/products/puffer-jacket-with-a-high-neck"},
+      {id:6,name:"STWD hooded puffer jacket",price:"479.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07700501811-A4M.webp?v=1771860355",link:"https://mywildclothing.com/products/stwd-hooded-puffer-jacket"},
+      {id:7,name:"STWD Padded Jacket",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07700537800-M.webp?v=1771885077",link:"https://mywildclothing.com/products/stwd-padded-jacket-2"},
+      {id:8,name:"Puffer jacket with a high neck",price:"449.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/0372050380000-A7M.webp?v=1771859386",link:"https://mywildclothing.com/products/puffer-jacket-with-a-high-neck-1"},
+      {id:9,name:"Aviator jacket",price:"479.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jackjones-jornorrebroworkerjacket-beige_6.webp?v=1771172064",link:"https://mywildclothing.com/products/aviator-jacket"},
+      {id:10,name:"LIGHTWEIGHT WATER REPELLENT PUFFER JACKET",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/04302207401-e1.jpg?v=1770992519",link:"https://mywildclothing.com/products/lightweight-water-repellent-puffer-jacket"},
+      {id:11,name:"Doudoune",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jackjones-jjmazepuffercollar-verte_6.webp?v=1770992722",link:"https://mywildclothing.com/products/doudoune-1"},
+      {id:12,name:"Soft fabric jacket with pockets",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07380621802-a1.jpg?v=1768672525",link:"https://mywildclothing.com/products/oversize-printed-hoodie-27"},
+      {id:13,name:"DENIM JACKET WITH POCKETS",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/org_3.jpg?v=1768673110",link:"https://mywildclothing.com/products/denim-jacket-with-pockets"},
+      {id:14,name:"Combined jacket with collar",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/06318318712-a1_1.jpg?v=1768673424",link:"https://mywildclothing.com/products/combined-jacket-with-collar"},
+      {id:15,name:"PUFFER",price:"540.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/1_org_zoom_6.webp?v=1767480749",link:"https://mywildclothing.com/products/puffer-5"},
+      {id:16,name:"POCKET DENIM JACKET",price:"270.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/04896c5f-9f1a-4953-b4cc-162705a82d8c.jpg?v=1766156289",link:"https://mywildclothing.com/products/pocket-denim-jacket"},
+      {id:17,name:"POCKET DENIM JACKET",price:"270.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/PQ2504-JACKET-BLACK002.webp?v=1766156435",link:"https://mywildclothing.com/products/pocket-denim-jacket-1"},
+      {id:18,name:"FAUX LEATHER JACKET",price:"370.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/71be038f-d0f3-41c5-846a-4a59d15ed59b.jpg?v=1760299697",link:"https://mywildclothing.com/products/faux-leather-jacket-1"},
+      {id:19,name:"FAUX LEATHER JACKET",price:"370.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/8be97df7-f03b-48cc-ac0d-31cb9544de61.jpg?v=1760299691",link:"https://mywildclothing.com/products/faux-leather-jacket-3"},
+      {id:20,name:"Jack & Jones Jcoreflex Bomber Jacket",price:"449.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jack-jones-reflex-bomber-jacket-12278576-poseidon.jpg?v=1759092006",link:"https://mywildclothing.com/products/jack-jones-jcoreflex-bomber-jacket"},
+      {id:21,name:"SHERPA JACKET",price:"460.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/7711526400_2_1_1.jpg?v=1742336912",link:"https://mywildclothing.com/products/sherpa-jacket"},
+      {id:22,name:"Parka in contrast faux shearling fabric",price:"399.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07711512450-A7M.webp?v=1738867301",link:"https://mywildclothing.com/products/parka-in-contrast-faux-shearling-fabric"},
+      {id:23,name:"Raincoat with hood",price:"379.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07711550711-A1M.webp?v=1769782780",link:"https://mywildclothing.com/products/raincoat-with-hood"},
+      {id:24,name:"Jacket with pouch pocket and logo",price:"379.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07710534802-A1M.webp?v=1734440812",link:"https://mywildclothing.com/products/jacket-with-pouch-pocket-and-logo-2"},
+      {id:25,name:"LEATHER-EFFECT BIKER JACKET",price:"649.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/04391400800-e1_1.jpg?v=1733948234",link:"https://mywildclothing.com/products/leather-effect-biker-jacket"},
+      {id:26,name:"PUFFER",price:"469.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/01900226300-p1.jpg?v=1734013157",link:"https://mywildclothing.com/products/puffer-1"},
+      {id:27,name:"RUBBERISED PUFFER GILET",price:"419.00 DH",cat:"clothing",sub:"gilet",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/03918390800-e1_b390dc7a-3f19-4bbc-8dcd-0889935eb7a3.jpg?v=1771710471",link:"https://mywildclothing.com/products/rubberised-puffer-gilet"},
+      {id:28,name:"RUBBERISED PUFFER GILET",price:"419.00 DH",cat:"clothing",sub:"gilet",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/1889433-7.jpg?v=1770991972",link:"https://mywildclothing.com/products/rubberised-puffer-gilet-1"},
+      {id:29,name:"RUBBERISED PUFFER GILET",price:"379.00 DH",cat:"clothing",sub:"gilet",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/05992300506-000-e1.webp?v=1769282639",link:"https://mywildclothing.com/products/rubberised-puffer-gilet-2"},
+      {id:30,name:"REGULAR FIT PADDED GILET",price:"319.00 DH",cat:"clothing",sub:"gilet",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/00029440707-e1.jpg?v=1768860743",link:"https://mywildclothing.com/products/regular-fit-padded-gilet"},
+      {id:31,name:"PUFFER GILET WITH POCKETS",price:"319.00 DH",cat:"clothing",sub:"gilet",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/03918710711-a1.jpg?v=1768676452",link:"https://mywildclothing.com/products/puffer-gilet-with-pockets"},
+      {id:32,name:"GILET",price:"229.00 DH",cat:"clothing",sub:"gilet",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/f3db2462-297f-40e4-bfc8-79c51f7f2e8c.jpg?v=1761337824",link:"https://mywildclothing.com/products/gilet"},
+      {id:33,name:"GILET SANS MANCHES",price:"230.00 DH",cat:"clothing",sub:"gilet",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/efa20063-a7f2-4478-be37-731e9b829ce0.jpg?v=1759092956",link:"https://mywildclothing.com/products/gilet-sans-manches"},
+      {id:34,name:"GILET SANS MANCHES",price:"230.00 DH",cat:"clothing",sub:"gilet",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/677bc53a-6624-4de1-a2f2-64296adf1bdf.jpg?v=1759092739",link:"https://mywildclothing.com/products/gilet-sans-manches-1"},
+      {id:35,name:"RELAXED FIT COTTON SHIRT",price:"199.00 DH",cat:"clothing",sub:"shirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---KAKI.webp?v=1776114505",link:"https://mywildclothing.com/products/relaxed-fit-cotton-shirt-6"},
+      {id:36,name:"RELAXED FIT COTTON SHIRT",price:"199.00 DH",cat:"clothing",sub:"shirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---BLUE.webp?v=1775771844",link:"https://mywildclothing.com/products/relaxed-fit-cotton-shirt-5"},
+      {id:37,name:"RELAXED FIT COTTON SHIRT",price:"199.00 DH",cat:"clothing",sub:"shirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---MINT1.webp?v=1775769881",link:"https://mywildclothing.com/products/relaxed-fit-cotton-shirt-4"},
+      {id:38,name:"RELAXED FIT COTTON SHIRT",price:"199.00 DH",cat:"clothing",sub:"shirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---BEIGE.webp?v=1775769727",link:"https://mywildclothing.com/products/relaxed-fit-cotton-shirt-3"},
+      {id:39,name:"RELAXED FIT COTTON SHIRT",price:"199.00 DH",cat:"clothing",sub:"shirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---VERT-C1.webp?v=1775769647",link:"https://mywildclothing.com/products/relaxed-fit-cotton-shirt-2"},
+      {id:40,name:"RELAXED FIT COTTON SHIRT",price:"199.00 DH",cat:"clothing",sub:"shirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---CIEL.webp?v=1775769553",link:"https://mywildclothing.com/products/relaxed-fit-cotton-shirt-1"},
+      {id:41,name:"Long sleeve check shirt",price:"240.00 DH",cat:"clothing",sub:"shirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/0747256560000-A7M.webp?v=1769783388",link:"https://mywildclothing.com/products/long-sleeve-check-shirt"},
+      {id:42,name:"Denim shirt with a pocket",price:"240.00 DH",cat:"clothing",sub:"shirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/04551401712-p.jpg?v=1769008378",link:"https://mywildclothing.com/products/denim-shirt-with-a-pocket"},
+      {id:43,name:"PRINTED PATCH HOODIE",price:"249.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/IDENTITY-OVERSIZE-HOODIE-GRIS-C.webp?v=1773242598",link:"https://mywildclothing.com/products/printed-patch-hoodie-1"},
+      {id:44,name:"WASHED PRINTED HOODIE",price:"219.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/MDT-OVERSIZE-HOODIE--GRIS-C.webp?v=1772899506",link:"https://mywildclothing.com/products/washed-printed-hoodie-1"},
+      {id:45,name:"WASHED PRINTED HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/MDT-OVERSIZE-HOODIE--BEIGEF.webp?v=1772899355",link:"https://mywildclothing.com/products/washed-printed-hoodie"},
+      {id:46,name:"PRINTED PATCH BOXYFIT HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/f5d1795c-8097-4f12-8ad0-81f861b653b3.jpg?v=1771105346",link:"https://mywildclothing.com/products/printed-patch-boxyfit-hoodie-2"},
+      {id:47,name:"EMBROIDERED OVERSIZE HOODIE",price:"240.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/UNSHAKEN-OV-HOODIE--BLACK.webp?v=1770840473",link:"https://mywildclothing.com/products/embroidered-oversize-hoodie-2"},
+      {id:48,name:"EMBROIDERED OVERSIZE HOODIE",price:"240.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/UNSHAKEN-OV-HOODIE--GRIS-C.webp?v=1770840229",link:"https://mywildclothing.com/products/embroidered-oversize-hoodie-1"},
+      {id:49,name:"WASHED BOXYFIT HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/WINTER-BOXYFIT-HOODIE--CANARD.webp?v=1770498151",link:"https://mywildclothing.com/products/washed-boxyfit-hoodie"},
+      {id:50,name:"PRINTED PATCH OVERSIZE HOODIE",price:"219.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SYMMETRY-OV-HOODIE-BLACK-P1_37945836-0314-40a6-add0-21037563cdc0.webp?v=1770500361",link:"https://mywildclothing.com/products/printed-patch-oversize-hoodie"},
+      {id:51,name:"PRINTED PATCH HOODIE",price:"219.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/PAUSE-OVERSIZE-HOODIE---BLACK1.webp?v=1770299035",link:"https://mywildclothing.com/products/printed-patch-hoodie"},
+      {id:52,name:"WASHED PRINTED HOODIE",price:"260.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/f00063fa-1486-4070-8d2d-773402a53912.jpg?v=1769868480",link:"https://mywildclothing.com/products/washed-printed-hoodie-2"},
+      {id:53,name:"PRINTED PATCH BOXYFIT HOODIE",price:"220.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/AIM-BOXYFIT-HOODIE---WINTERY41.webp?v=1769629862",link:"https://mywildclothing.com/products/printed-patch-boxyfit-hoodie-1"},
+      {id:54,name:"PRINTED PATCH BOXYFIT HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SIL-BLUR-BOXYFIT-HOODIE--R-GREEN_1.webp?v=1769629798",link:"https://mywildclothing.com/products/printed-patch-boxyfit-hoodie"},
+      {id:55,name:"BASIC OVERSIZE HOODIE",price:"199.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/BASIC-HOODIE-OVERSIZE-BLUE-M.webp?v=1769629615",link:"https://mywildclothing.com/products/basic-oversize-hoodie-2"},
+      {id:56,name:"OVERSIZE PRINTED HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/61078a4c-1cfe-4a0f-a375-07bb45467e6f.jpg?v=1768672117",link:"https://mywildclothing.com/products/oversize-printed-hoodie-26"},
+      {id:57,name:"OVERSIZE PRINTED HOODIE",price:"219.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/2c27db0b-e929-495d-9a7a-22d273c9712b.jpg?v=1768672008",link:"https://mywildclothing.com/products/oversize-printed-hoodie-25"},
+      {id:58,name:"EMBROIDERED OVERSIZE HOODIE",price:"259.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/873e3109-1607-4a10-a61b-e80fa329dbe0.jpg?v=1768568854",link:"https://mywildclothing.com/products/embroidered-oversize-hoodie"},
+      {id:59,name:"PRINTED PATCH BOXYFIT HOODIE",price:"219.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SKYLINE-BOXY-FIT-HOODIE-WINTERY41.webp?v=1768568394",link:"https://mywildclothing.com/products/printed-patch-boxyfit-hoodie-3"},
+      {id:60,name:"PRINTED PATCH BOXYFIT HOODIE",price:"219.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/BASKET-BOXYFIT-HOODIE---S-PINE1.webp?v=1768328248",link:"https://mywildclothing.com/products/printed-patch-boxyfit-hoodie-4"},
+      {id:61,name:"OVERSIZE PRINTED HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/947f6aa1-12b9-4ded-bccb-6e9b5f88ed7f.jpg?v=1768141074",link:"https://mywildclothing.com/products/oversize-printed-hoodie-24"},
+      {id:62,name:"WASHED EMBROIDERED HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/P-BALANCE-OVERSIZE-HOODIE-GRISC.webp?v=1767480431",link:"https://mywildclothing.com/products/washed-embroidered-hoodie-3"},
+      {id:63,name:"WASHED EMBROIDERED HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/P-BALANCE-OVERSIZE-HOODIE-KAKI.webp?v=1767480349",link:"https://mywildclothing.com/products/washed-embroidered-hoodie-2"},
+      {id:64,name:"WASHED EMBROIDERED HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/P-BALANCE-OVERSIZE-HOODIE-VERT.webp?v=1767480275",link:"https://mywildclothing.com/products/washed-embroidered-hoodie-1"},
+      {id:65,name:"WASHED EMBROIDERED HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/P-BALANCE-OVERSIZE-HOODIE-GRIS-F.webp?v=1767480165",link:"https://mywildclothing.com/products/washed-embroidered-hoodie"},
+      {id:66,name:"PRINTED PATCH HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/FLOATING-OVERSIZE-HOODIE-GREEN.webp?v=1767479879",link:"https://mywildclothing.com/products/printed-patch-hoodie-2"},
+      {id:67,name:"PRINTED PATCH HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/c70390d4-3612-40f0-b575-b02902bfca72.jpg?v=1763669492",link:"https://mywildclothing.com/products/printed-patch-hoodie-3"},
+      {id:68,name:"PRINTED PATCH HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/6aa722ee-8dc0-4c3d-8a7e-5fde43ea29bd.jpg?v=1763327725",link:"https://mywildclothing.com/products/oversize-printed-hoodie-23"},
+      {id:69,name:"PRINTED PATCH HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/d25c47c8-d174-404f-9043-9d534a8a2d9a.jpg?v=1763327720",link:"https://mywildclothing.com/products/oversize-printed-hoodie-22"},
+      {id:70,name:"BASIC OVERSIZE HOODIE",price:"199.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/989bbf3d-f075-47c6-ad40-f7773f33df27.jpg?v=1760531257",link:"https://mywildclothing.com/products/basic-oversize-hoodie-1"},
+      {id:71,name:"BASIC OVERSIZE HOODIE",price:"199.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/BASIC-OVERSIZE-HOODIE-BLACK-spr.webp?v=1759325661",link:"https://mywildclothing.com/products/basic-oversize-hoodie"},
+      {id:72,name:"OVERSIZE PRINTED HOODIE",price:"180.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/a38d13f7-67a7-412f-82ac-75801ade06dc.jpg?v=1758368197",link:"https://mywildclothing.com/products/oversize-printed-hoodie-9"},
+      {id:73,name:"BASIC SLIM FIT HOODIE",price:"199.00 DH",cat:"clothing",sub:"hoodies",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/1fa890e5-455f-4392-a59c-9b08b2d2ba84.jpg?v=1729705929",link:"https://mywildclothing.com/products/basic-slim-fit-hoodie"},
+      {id:74,name:"EMBROIDERED BOXY-FIT T-SHIRT",price:"179.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/d5d5d457-7da2-4513-8429-b2782016f506.jpg?v=1776093607",link:"https://mywildclothing.com/products/embroidered-boxy-fit-t-shirt-1"},
+      {id:75,name:"EMBROIDERED BOXY-FIT T-SHIRT",price:"179.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/5d2a755f-9f9b-4ada-9419-a9838229d6fa.jpg?v=1776093596",link:"https://mywildclothing.com/products/embroidered-boxy-fit-t-shirt"},
+      {id:76,name:"PRINTED PATCH BOXY-FIT T-SHIRT",price:"179.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/PADELS-BOXY-FIT-J-7-T-SHIRT---BLACK.webp?v=1776093300",link:"https://mywildclothing.com/products/printed-patch-boxy-fit-t-shirt"},
+      {id:77,name:"PRINTED BOXY-FIT T-SHIRT",price:"190.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/NO-OFF-BOXY-FIT-T-SHIRT-BLACK_5542f668-37f7-48ce-9324-4d831a8faf56.webp?v=1775856284",link:"https://mywildclothing.com/products/printed-boxy-fit-t-shirt-3"},
+      {id:78,name:"PRINTED BOXY-FIT T-SHIRT",price:"190.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/NO-OFF-BOXY-FIT-T-SHIRT-WHITE_f7399207-fad4-43f6-9aad-e8f928061d34.webp?v=1775856241",link:"https://mywildclothing.com/products/printed-boxy-fit-t-shirt-2"},
+      {id:79,name:"PRINTED BOXY-FIT T-SHIRT",price:"190.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/NO-OFF-BOXY-FIT-T-SHIRT-MARINE_08b746bf-a402-49d9-a30c-ce90ec356392.webp?v=1775856172",link:"https://mywildclothing.com/products/printed-boxy-fit-t-shirt-1"},
+      {id:80,name:"PRINTED BOXY-FIT T-SHIRT",price:"190.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/NO-OFF-BOXY-FIT-T-SHIRT-SAPIN_c733ffe8-4902-4de6-abe0-e8f488dbdee7.webp?v=1775856018",link:"https://mywildclothing.com/products/printed-boxy-fit-t-shirt"},
+      {id:81,name:"EMBROIDERED OVERSIZE T-SHIRT",price:"159.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/YOUNG-OV-J-6-T-SHIRT--BLACKP.webp?v=1775855777",link:"https://mywildclothing.com/products/embroidered-oversize-t-shirt-1"},
+      {id:82,name:"EMBROIDERED OVERSIZE T-SHIRT",price:"159.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/YOUNG-OV-J-6-T-SHIRT--VIOLET.webp?v=1775855691",link:"https://mywildclothing.com/products/embroidered-oversize-t-shirt"},
+      {id:83,name:"PRINTED POCKET T-SHIRT",price:"169.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/HABLA-OV-POCKET-T-SHIRT-PE-YELLOW2.webp?v=1775855472",link:"https://mywildclothing.com/products/printed-pocket-t-shirt"},
+      {id:84,name:"PRINTED OVERSIZE T-SHIRT",price:"160.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SANCTUARY-OV-J-7-T-SHIRT-CANARD.webp?v=1775773517",link:"https://mywildclothing.com/products/printed-oversize-t-shirt-2"},
+      {id:85,name:"PRINTED OVERSIZE T-SHIRT",price:"160.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SANCTUARY-OV-J-7-T-SHIRT-BRIQUE2_4ce565a9-d576-445d-9261-ca9a1f5bfe52.webp?v=1775772685",link:"https://mywildclothing.com/products/printed-oversize-t-shirt-1"},
+      {id:86,name:"PRINTED OVERSIZE T-SHIRT",price:"160.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SANCTUARY-OV-J-7-T-SHIRT-CIEL_59e5123f-a9c3-4e62-b6e1-7d66305796a9.webp?v=1775772595",link:"https://mywildclothing.com/products/printed-oversize-t-shirt"},
+      {id:87,name:"HEAVY BASIC OVERSIZED TEE SHIRT",price:"129.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/6ec7edf7-5ffb-4e20-908d-2394d5897f2e.jpg?v=1752013025",link:"https://mywildclothing.com/products/heavy-basic-oversized-tee-shirt"},
+      {id:88,name:"HEAVYWEIGHT BASIC OVERSIZED TEE SHIRT",price:"129.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/c0c35fec-f2a4-4824-9967-fbb81d5f0557.jpg?v=1752012979",link:"https://mywildclothing.com/products/heavyweight-basic-oversized-tee-shirt"},
+      {id:89,name:"BASIC OVERSIZED TEE SHIRT",price:"110.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/e6279bc7-35c1-4a6e-9a0f-c41821c1ce19.jpg?v=1750248778",link:"https://mywildclothing.com/products/basic-oversized-tee-shirt"},
+      {id:90,name:"BASIC HEAVY OVERSIZED TEE SHIRT",price:"130.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/88803879-e57b-4703-97b7-d94a7ad94d88.jpg?v=1748434045",link:"https://mywildclothing.com/products/basic-heavy-oversized-tee-shirt"},
+      {id:91,name:"BASIC HEAVY OVERSIZED TEE SHIRT",price:"130.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/c39ea69a-7d4f-4287-9e2c-d71c5f73ae97.jpg?v=1748434015",link:"https://mywildclothing.com/products/basic-heavy-oversized-tee-shirt-3"},
+      {id:92,name:"BASIC OVERSIZE T-SHIRT",price:"119.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/BASIC-OVERSIZE-T-SHIRT-ECRU-Q685.webp?v=1759520002",link:"https://mywildclothing.com/products/basic-oversize-tee-shirt-2"},
+      {id:93,name:"BASIC TEE SHIRT",price:"99.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/wh-ts1.webp?v=1702998024",link:"https://mywildclothing.com/products/white-essentials"},
+      {id:94,name:"BASIC T-SHIRT",price:"99.00 DH",cat:"clothing",sub:"t-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/Padauk_Denim_23_1200x1800_61e12c94-e3ca-4b1d-9c86-9428cdf978b3.jpg?v=1604185061",link:"https://mywildclothing.com/products/essential-tees"},
+      {id:95,name:"Textured Knitted Sweater",price:"120.00 DH",cat:"clothing",sub:"sweaters",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/DSC_0412.webp?v=1701786734",link:"https://mywildclothing.com/products/textured-knitted-sweater-3"},
+      {id:96,name:"Textured Knitted Sweater",price:"179.00 DH",cat:"clothing",sub:"sweaters",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/DSC_0402.webp?v=1701786057",link:"https://mywildclothing.com/products/textured-knitted-sweater"},
+      {id:97,name:"TEXTURED KNIT T-SHIRT",price:"90.00 DH",cat:"clothing",sub:"knitted-tee-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/50529254-b3f3-4030-8682-b0f4343753d1_22e7ba1e-33d0-4988-a34e-d10221a96c5d.jpg?v=1750162054",link:"https://mywildclothing.com/products/textured-knit-t-shirt-16"},
+      {id:98,name:"TEXTURED KNIT T-SHIRT",price:"90.00 DH",cat:"clothing",sub:"knitted-tee-shirt",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/5c0a5340-c002-4906-830f-e7d3533cfe96.jpg?v=1750161840",link:"https://mywildclothing.com/products/textured-knit-t-shirt-14"},
+      {id:99,name:"PRINTED OVERSIZE SWEATSHIRT",price:"180.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/OXFORD-OV-SWEATSHIRT---L-GRIS.webp?v=1772899704",link:"https://mywildclothing.com/products/printed-oversize-sweatshirt-4"},
+      {id:100,name:"PRINTED PATCH SWEATSHIRT",price:"180.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/881e470e-8e2c-4648-8026-23c5e2eee87f.jpg?v=1772029315",link:"https://mywildclothing.com/products/printed-patch-sweatshirt-6"},
+      {id:101,name:"PRINTED PATCH SWEATSHIRT",price:"180.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/a68ca7ac-0a60-430c-879f-a8931be8cdb0.jpg?v=1772029306",link:"https://mywildclothing.com/products/printed-patch-sweatshirt-5"},
+      {id:102,name:"PRINTED OVERSIZE SWEATSHIRT",price:"180.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/RESILIENCE-OV-SWEATSHIRT-D-EARTH1.webp?v=1771101474",link:"https://mywildclothing.com/products/printed-oversize-sweatshirt-1"},
+      {id:103,name:"EMBROIDERED WASHED SWEATSHIRT",price:"240.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CRACKED-OV-SWEATSHIRT--BLACK.webp?v=1770840055",link:"https://mywildclothing.com/products/embroidered-washed-sweatshirt-1"},
+      {id:104,name:"EMBROIDERED WASHED SWEATSHIRT",price:"180.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CRACKED-OV-SWEATSHIRT--marron.webp?v=1770839731",link:"https://mywildclothing.com/products/embroidered-washed-sweatshirt"},
+      {id:105,name:"PRINTED PATCH SWEATSHIRT",price:"180.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/MODE-ON-OV-SWEATSHIRT---WINTERY.webp?v=1770579577",link:"https://mywildclothing.com/products/printed-patch-sweatshirt-3"},
+      {id:106,name:"PRINTED PATCH SWEATSHIRT",price:"180.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/COUNTS-OV-SWEATSHIRT--ECRU.webp?v=1767479756",link:"https://mywildclothing.com/products/printed-patch-sweatshirt-4"},
+      {id:107,name:"POLO COLLAR SWEATSHIRT",price:"219.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/POLO-OVERSIZE-SWEATSHIRT--ECRU_1.webp?v=1767294334",link:"https://mywildclothing.com/products/polo-collar-sweatshirt-4"},
+      {id:108,name:"POLO COLLAR SWEATSHIRT",price:"219.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/POLO-OVERSIZE-SWEATSHIRT--GRISC.webp?v=1766776818",link:"https://mywildclothing.com/products/polo-collar-sweatshirt-2"},
+      {id:109,name:"PRINTED OVERSIZE SWEATSHIRT",price:"190.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SR-OVERSIZE-SWEATSHIRT-GRIS-C.webp?v=1766517125",link:"https://mywildclothing.com/products/printed-oversize-sweatshirt-3"},
+      {id:110,name:"PRINTED OVERSIZE SWEATSHIRT",price:"219.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHASE-OV-SWEATSHIRT---I-FLOW.webp?v=1766516843",link:"https://mywildclothing.com/products/printed-oversize-sweatshirt-2"},
+      {id:111,name:"EMBROIDRED QUARTER-ZIP SWEATSHIRT",price:"219.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/9003f5c5-3e80-4d59-9082-9ec9ef8061d2.jpg?v=1763669603",link:"https://mywildclothing.com/products/embroidred-quarter-zip-sweatshirt-2"},
+      {id:112,name:"EMBROIDRED QUARTER-ZIP SWEATSHIRT",price:"219.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/127bd50d-83ce-4307-a8d7-5c00663c7a04.jpg?v=1763669587",link:"https://mywildclothing.com/products/embroidred-quarter-zip-sweatshirt-1"},
+      {id:113,name:"EMBROIDRED QUARTER-ZIP SWEATSHIRT",price:"219.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/dde2b3df-d9e9-4aad-a6d1-c3976305b722.jpg?v=1763669596",link:"https://mywildclothing.com/products/embroidred-quarter-zip-sweatshirt"},
+      {id:114,name:"PRINTED PATCH SWEATSHIRT",price:"240.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/dd2667fb-5ff9-4ba3-a491-8fa1413e28ab.jpg?v=1759932892",link:"https://mywildclothing.com/products/printed-patch-sweatshirt-1"},
+      {id:115,name:"PRINTED PATCH SWEATSHIRT",price:"220.00 DH",cat:"clothing",sub:"sweatshirts",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/GOLF-OV-SWEATSHIRT-BLACK-P.webp?v=1759520284",link:"https://mywildclothing.com/products/printed-patch-sweatshirt"},
+      {id:116,name:"OV BLACK SUNGLASSES",price:"79.00 DH",cat:"sunglasses",sub:"sunglasses",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-G15-89237-BLACK1.webp?v=1776173679",link:"https://mywildclothing.com/products/ov-black-sunglasses"},
+      {id:117,name:"OV TORTOISESHELL SUNGLASSES",price:"79.00 DH",cat:"sunglasses",sub:"sunglasses",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-YS-1095-BLACK3.webp?v=1776173152",link:"https://mywildclothing.com/products/onx-black-sunglasses"},
+      {id:118,name:"ONX BLACK SUNGLASSES",price:"79.00 DH",cat:"sunglasses",sub:"sunglasses",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-YS-1095-TRANSPARANT3.webp?v=1776173069",link:"https://mywildclothing.com/products/onx-transparent-sunglasses"},
+      {id:119,name:"MONACO BROWN SUNGLASSES",price:"79.00 DH",cat:"sunglasses",sub:"sunglasses",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-YS-1077-MARRON3.webp?v=1776173508",link:"https://mywildclothing.com/products/monaco-brown-sunglasses"},
+      {id:120,name:"MONACO GREY SUNGLASSES",price:"79.00 DH",cat:"sunglasses",sub:"sunglasses",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-YS-1077-TRANSPARANT3.webp?v=1776173443",link:"https://mywildclothing.com/products/monaco-grey-sunglasses"},
+      {id:121,name:"SQ BLUE SUNGLASSES",price:"79.00 DH",cat:"sunglasses",sub:"sunglasses",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-YS-1094-BLUE3.webp?v=1776173333",link:"https://mywildclothing.com/products/sq-blue-sunglasses"},
+      {id:122,name:"ONX WHITE SUNGLASSES",price:"79.00 DH",cat:"sunglasses",sub:"sunglasses",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-YS-1095-WHITE3.webp?v=1776172963",link:"https://mywildclothing.com/products/onx-white-sunglasses"},
+
+      // Carousel products (also addable to bag)
+      {id:1001,name:"Padded Jacket",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Gemini_Generated_Image_3iahk53iahk53iah.png?v=1776745471",link:"https://mywildclothing.com/products/padded-jacket-with-hood-4"},
+      {id:1002,name:"Patch Hoodie",price:"249.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/IDENTITY-OVERSIZE-HOODIE-GRIS-C.webp?v=1773242598",link:"https://mywildclothing.com/products/printed-patch-hoodie-1"},
+      {id:1003,name:"Cotton Shirt",price:"199.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/CHEMISE-COL-M-26---KAKI.webp?v=1776114505",link:"https://mywildclothing.com/products/relaxed-fit-cotton-shirt-6"},
+      {id:1004,name:"Black Shades",price:"79.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/SUNG-G15-89237-BLACK1.webp?v=1776173679",link:"https://mywildclothing.com/products/ov-black-sunglasses"},
+      {id:1005,name:"Oversize Hoodie",price:"240.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/UNSHAKEN-OV-HOODIE--GRIS-C.webp?v=1770840229",link:"https://mywildclothing.com/products/embroidered-oversize-hoodie-1"},
+      {id:1006,name:"OV Sweatshirt",price:"285.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/OXFORD-OV-SWEATSHIRT---L-GRIS.webp?v=1772899704",link:"https://mywildclothing.com/products/printed-oversize-sweatshirt-4"},
+      {id:1007,name:"Premium Tee",price:"150.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/NO-OFF-BOXY-FIT-T-SHIRT-WHITE_f7399207-fad4-43f6-9aad-e8f928061d34.webp?v=1775856241",link:"https://mywildclothing.com/products/oversized-premium-t-shirt"},
+      {id:1008,name:"Cargo Pants",price:"319.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/127bd50d-83ce-4307-a8d7-5c00663c7a04.jpg?v=1763669587",link:"https://mywildclothing.com/products/fitted-cargo-pants"},
+      {id:1009,name:"Puffer High Neck",price:"449.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/0372050371700-A7M.webp?v=1771859239",link:"https://mywildclothing.com/products/puffer-jacket-with-a-high-neck"},
+      {id:1010,name:"Aviator Jacket",price:"479.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jackjones-jornorrebroworkerjacket-beige_6.webp?v=1771172064",link:"https://mywildclothing.com/products/aviator-jacket"},
+      {id:1011,name:"Denim Jacket",price:"419.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/org_3.jpg?v=1768673110",link:"https://mywildclothing.com/products/denim-jacket-with-pockets"},
+      {id:1012,name:"Leather Jacket",price:"370.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/71be038f-d0f3-41c5-846a-4a59d15ed59b.jpg?v=1760299697",link:"https://mywildclothing.com/products/faux-leather-jacket-1"},
+      {id:1013,name:"Parka Shearling",price:"399.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07711512450-A7M.webp?v=1738867301",link:"https://mywildclothing.com/products/parka-in-contrast-faux-shearling-fabric"},
+      {id:1014,name:"Raincoat Hood",price:"379.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/07711550711-A1M.webp?v=1769782780",link:"https://mywildclothing.com/products/raincoat-with-hood"},
+      {id:1015,name:"Bomber Jacket",price:"449.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/jack-jones-reflex-bomber-jacket-12278576-poseidon.jpg?v=1759092006",link:"https://mywildclothing.com/products/jack-jones-jcoreflex-bomber-jacket"},
+      {id:1016,name:"Puffer Jacket",price:"469.00 DH",cat:"clothing",sub:"jackets",img:"https://cdn.shopify.com/s/files/1/0057/0425/3529/files/01900226300-p1.jpg?v=1734013157",link:"https://mywildclothing.com/products/puffer-1"},
+    ];
+
+    let mwCat='all', mwSub=null, mwPage=1;
+    const PER_PAGE=20;
+
+    // Wishlist persistence
+    let MW_WISH = new Set();
+    try { MW_WISH = new Set(JSON.parse(localStorage.getItem('mwWishlist')||'[]')); } catch(e){}
+    function mwUpdateWishBadge(){
+      const b=document.getElementById('wishBadge');
+      if(!b) return;
+      if(MW_WISH.size>0){ b.textContent=MW_WISH.size; b.style.display='flex'; }
+      else { b.style.display='none'; }
+    }
+    window.mwToggleWish=function(id,btn){
+      id=String(id);
+      if(MW_WISH.has(id)){ MW_WISH.delete(id); btn.classList.remove('active'); }
+      else { MW_WISH.add(id); btn.classList.add('active'); }
+      try { localStorage.setItem('mwWishlist', JSON.stringify([...MW_WISH])); } catch(e){}
+      mwUpdateWishBadge();
+    }
+    mwUpdateWishBadge();
+
+    // Bag persistence + drawer
+    let MW_BAG = {};
+    try { MW_BAG = JSON.parse(localStorage.getItem('mwBag')||'{}'); } catch(e){}
+    function mwBagCount(){ return Object.values(MW_BAG).reduce((s,it)=>s+it.qty,0); }
+    function mwBagTotal(){
+      return Object.values(MW_BAG).reduce((s,it)=>{
+        const n=parseFloat(String(it.price).replace(/[^0-9.]/g,''))||0;
+        return s + n*it.qty;
+      },0);
+    }
+    function mwSaveBag(){ try { localStorage.setItem('mwBag', JSON.stringify(MW_BAG)); } catch(e){} }
+    function mwUpdateBagBadge(){
+      const b=document.getElementById('cartBadge'); if(!b) return;
+      const c=mwBagCount();
+      if(c>0){ b.textContent=c; b.style.display='flex'; } else { b.style.display='none'; }
+      const cc=document.getElementById('bagCount'); if(cc) cc.textContent=c;
+    }
+    function mwRenderBag(){
+      const body=document.getElementById('bagBody'), foot=document.getElementById('bagFooter');
+      if(!body) return;
+      const ids=Object.keys(MW_BAG);
+      if(ids.length===0){
+        body.innerHTML='<div class="bag-empty"><svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#bbb" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><p>Your bag is empty</p></div>';
+        foot.style.display='none';
+      } else {
+        body.innerHTML=ids.map(id=>{
+          const it=MW_BAG[id];
+          return `<div class="bag-item">
+            <img class="bag-item__img" src="${it.img}" alt="${it.name}" onerror="this.style.background='#eee'">
+            <div class="bag-item__info">
+              <div>
+                <h4 class="bag-item__name">${it.name}</h4>
+                <p class="bag-item__price">${it.price}</p>
+              </div>
+              <div class="bag-item__bottom">
+                <div class="bag-item__qty">
+                  <button class="bag-item__qbtn" onclick="mwBagQty('${id}',-1)">−</button>
+                  <span class="bag-item__qval">${it.qty}</span>
+                  <button class="bag-item__qbtn" onclick="mwBagQty('${id}',1)">+</button>
+                </div>
+                <button class="bag-item__remove" onclick="mwBagRemove('${id}')">Remove</button>
+              </div>
+            </div>
+          </div>`;
+        }).join('');
+        document.getElementById('bagTotal').textContent = mwBagTotal().toFixed(2)+' DH';
+        foot.style.display='block';
+      }
+    }
+    window.mwAddToBag=function(id){
+      id=String(id);
+      const p=MW_PRODUCTS.find(x=>String(x.id)===id); if(!p) return;
+      if(MW_BAG[id]) MW_BAG[id].qty++;
+      else MW_BAG[id]={name:p.name,price:p.price,img:p.img,qty:1};
+      mwSaveBag(); mwUpdateBagBadge(); mwRenderBag(); mwToast();
+    }
+    window.mwBagQty=function(id,delta){
+      if(!MW_BAG[id]) return;
+      MW_BAG[id].qty+=delta;
+      if(MW_BAG[id].qty<=0) delete MW_BAG[id];
+      mwSaveBag(); mwUpdateBagBadge(); mwRenderBag();
+    }
+    window.mwBagRemove=function(id){ delete MW_BAG[id]; mwSaveBag(); mwUpdateBagBadge(); mwRenderBag(); }
+    function mwOpenBag(){
+      document.getElementById('bagDrawer').classList.add('bag-drawer--open');
+      document.getElementById('bagOverlay').classList.add('bag-overlay--open');
+      document.body.style.overflow='hidden';
+    }
+    function mwCloseBag(){
+      document.getElementById('bagDrawer').classList.remove('bag-drawer--open');
+      document.getElementById('bagOverlay').classList.remove('bag-overlay--open');
+      document.body.style.overflow='';
+    }
+    document.getElementById('bagBtn')?.addEventListener('click', mwOpenBag);
+    document.getElementById('closeBag')?.addEventListener('click', mwCloseBag);
+    document.getElementById('bagOverlay')?.addEventListener('click', mwCloseBag);
+    mwUpdateBagBadge();
+    mwRenderBag();
+
+      // Wishlist drawer
+      function mwRenderWish(){
+        const body=document.getElementById('wishBody'); if(!body) return;
+        const ids=[...MW_WISH];
+        document.getElementById('wishHeaderCount').textContent = ids.length;
+        if(ids.length===0){
+          body.innerHTML='<div class="bag-empty"><svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#bbb" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><p>Your wishlist is empty</p></div>';
+          return;
+        }
+        body.innerHTML=ids.map(id=>{
+          const p=MW_PRODUCTS.find(x=>String(x.id)===String(id));
+          if(!p) return '';
+          return `<div class="bag-item">
+            <img class="bag-item__img" src="${p.img}" alt="${p.name}" onerror="this.style.background='#eee'">
+            <div class="bag-item__info">
+              <div>
+                <h4 class="bag-item__name">${p.name}</h4>
+                <p class="bag-item__price">${p.price}</p>
+              </div>
+              <div class="bag-item__bottom">
+                <button class="bag-item__remove" onclick="mwAddToBag(${p.id})" style="text-decoration:none;color:#291409;font-weight:600;">+ Add to Bag</button>
+                <button class="bag-item__remove" onclick="mwWishRemove('${id}')">Remove</button>
+              </div>
+            </div>
+          </div>`;
+        }).join('');
+      }
+      window.mwWishRemove=function(id){
+        MW_WISH.delete(String(id));
+        try { localStorage.setItem('mwWishlist', JSON.stringify([...MW_WISH])); } catch(e){}
+        mwUpdateWishBadge(); mwRenderWish();
+        // Update any visible heart buttons
+        document.querySelectorAll('.mw-wish, .bs-wish').forEach(btn=>{
+          const onclick=btn.getAttribute('onclick')||'';
+          const m=onclick.match(/mwToggleWish\((\d+)/);
+          if(m && m[1]===String(id)) btn.classList.remove('active');
+        });
+      }
+      function mwOpenWish(){
+        mwRenderWish();
+        document.getElementById('wishDrawer').classList.add('bag-drawer--open');
+        document.getElementById('wishOverlay').classList.add('bag-overlay--open');
+        document.body.style.overflow='hidden';
+      }
+      function mwCloseWish(){
+        document.getElementById('wishDrawer').classList.remove('bag-drawer--open');
+        document.getElementById('wishOverlay').classList.remove('bag-overlay--open');
+        document.body.style.overflow='';
+      }
+      document.getElementById('wishBtn')?.addEventListener('click', mwOpenWish);
+      document.getElementById('closeWish')?.addEventListener('click', mwCloseWish);
+      document.getElementById('wishOverlay')?.addEventListener('click', mwCloseWish);
+
+      // Hook: also re-render wishlist drawer + sync carousel hearts whenever wish toggles
+      const _origToggle = window.mwToggleWish;
+      window.mwToggleWish = function(id, btn){
+        _origToggle(id, btn);
+        // Sync all hearts with same data-pid / matching id in onclick
+        document.querySelectorAll('.mw-wish, .bs-wish').forEach(b=>{
+          if(b===btn) return;
+          const oc=b.getAttribute('onclick')||'';
+          const m=oc.match(/mwToggleWish\((\d+)/);
+          if(m && m[1]===String(id)){
+            if(MW_WISH.has(String(id))) b.classList.add('active');
+            else b.classList.remove('active');
+          }
+        });
+        mwRenderWish();
+      }
+
+      // Initialize active state on carousel hearts (in case of reload)
+      document.querySelectorAll('.bs-wish').forEach(b=>{
+        const oc=b.getAttribute('onclick')||'';
+        const m=oc.match(/mwToggleWish\((\d+)/);
+        if(m && MW_WISH.has(m[1])) b.classList.add('active');
+      });
+  
+    const SUBS={
+      clothing:[{k:'all',l:'All Clothing'},{k:'jackets',l:'Jackets'},{k:'gilet',l:'Gilet'},{k:'shirts',l:'Shirts'},{k:'hoodies',l:'Hoodies'},{k:'t-shirt',l:'T-Shirts'},{k:'sweaters',l:'Sweaters'},{k:'knitted-tee-shirt',l:'Knitted Tees'},{k:'sweatshirts',l:'Sweatshirts'}],
+      sunglasses:[],
+      all:[]
+    };
+
+    function mwFiltered(){
+      let l=MW_PRODUCTS;
+      if(mwCat!=='all') l=l.filter(p=>p.cat===mwCat);
+      if(mwSub) l=l.filter(p=>p.sub===mwSub);
+      return l;
+    }
+
+    let mwAnimating=false;
+
+    function mwRender(skipAnim){
+      const f=mwFiltered(), tp=Math.ceil(f.length/PER_PAGE);
+      if(mwPage>tp) mwPage=tp||1;
+      const s=(mwPage-1)*PER_PAGE, items=f.slice(s,s+PER_PAGE);
+
+      const fc=document.getElementById('mw-filters');
+      const mains=[{k:'all',l:'All'},{k:'clothing',l:'Clothing'},{k:'sunglasses',l:'Sunglasses'}];
+      let filtersHTML='<div class="mw-frow mw-frow-main">'+
+        mains.map(x=>`<button class="mw-fbtn ${mwCat===x.k?'active':''}" onclick="mwSetCat('${x.k}')">${x.l}</button>`).join('')+
+      '</div>';
+      const subs=SUBS[mwCat]||[];
+      if(subs.length){
+        filtersHTML+='<div class="mw-frow mw-frow-sub">'+
+          subs.map(x=>`<button class="mw-fbtn mw-fbtn-sm ${(mwSub===x.k)||(!mwSub&&x.k==='all')?'active':''}" onclick="mwSetSub('${x.k}')">${x.l}</button>`).join('')+
+        '</div>';
+      }
+      fc.innerHTML=filtersHTML;
+
+      const g=document.getElementById('mw-grid');
+      const newHTML=items.length?items.map(p=>`
+        <div class="mw-card" id="mw-p${p.id}">
+          <a href="${p.link}" target="_blank" rel="noopener">
+            <div class="mw-imgwrap">
+              <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22400%22><rect fill=%22%23eee%22 width=%22300%22 height=%22400%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2214%22>No Image</text></svg>'">
+              <button class="mw-wish ${MW_WISH.has(String(p.id))?'active':''}" onclick="event.preventDefault();event.stopPropagation();mwToggleWish(${p.id},this)">
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+              <div class="mw-bag-overlay">
+                <button class="mw-bag-btn" onclick="event.preventDefault();event.stopPropagation();mwAddToBag(${p.id})">Add to Bag</button>
+              </div>
+            </div>
+            <div class="mw-info">
+              <h3 class="mw-name">${p.name}</h3>
+              <p class="mw-price">${p.price}</p>
+            </div>
+          </a>
+        </div>`).join(''):'<div class="mw-empty">No products found.</div>';
+
+      if(!skipAnim && !mwAnimating){
+        mwAnimating=true;
+        g.classList.add('slide-out');
+        setTimeout(()=>{
+          g.innerHTML=newHTML;
+          g.classList.remove('slide-out');
+          g.classList.add('slide-in');
+          void g.offsetWidth;
+          g.classList.remove('slide-in');
+          mwRevealCards();
+          mwAnimating=false;
+        },350);
+      } else {
+        g.innerHTML=newHTML;
+        mwRevealCards();
+      }
+
+      const pc=document.getElementById('mw-pages');
+      if(tp<=1){pc.innerHTML='';return;}
+      let h=`<button class="mw-pbtn ${mwPage===1?'disabled':''}" onclick="mwGo(${mwPage-1})">‹</button>`;
+      for(let i=1;i<=tp;i++) h+=`<button class="mw-pbtn ${i===mwPage?'active':''}" onclick="mwGo(${i})">${i}</button>`;
+      h+=`<button class="mw-pbtn ${mwPage===tp?'disabled':''}" onclick="mwGo(${mwPage+1})">›</button>`;
+      pc.innerHTML=h;
+    }
+
+    function mwRevealCards(){
+      const cards=document.querySelectorAll('.mw-card:not(.mw-visible)');
+      cards.forEach((c,i)=>{
+        setTimeout(()=>c.classList.add('mw-visible'), i*40);
+      });
+    }
+
+    window.mwSetCat=function(c){mwCat=c;mwSub=null;mwPage=1;mwRender();}
+    window.mwSetSub=function(s){mwSub=(s==='all'?null:s);mwPage=1;mwRender();}
+    window.mwGo=function(p){const f=mwFiltered(),tp=Math.ceil(f.length/PER_PAGE);if(p<1||p>tp)return;mwPage=p;mwRender();document.getElementById('mw-shop-section').scrollIntoView({behavior:'smooth',block:'start'});}
+    window.mwToast=function(){const t=document.getElementById('mw-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
+
+    mwRender(true);
+    </script>
+
+    <script>
+    // ====== PARFUM COMPLET CAROUSEL ======
+    (function(){
+        const products = [
+            {n:"Stronger With You Absolutely",p:"80.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/STRONGER_WITH_YOU_ABSOLUTELY.jpg?v=1776901821"},
+            {n:"Le Beau Le Parfum Intense",p:"120.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Le_Beau_Le_Parfum_Eau_de_Parfum_Intense.jpg?v=1776901859"},
+            {n:"Stronger With You Intensely 100ML",p:"980.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Emporio_Armani_Stronger_With_You_Intensely_Eau_de_Parfum_100_ML.jpg?v=1776901887"},
+            {n:"Scandal Le Parfum Intense 100ml",p:"1,240.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Scandal_Le_Parfum_-_Eau_De_Parfum_Intense_Pour_Homme_100ml.jpg?v=1776901909"},
+            {n:"Le Male Elixir Le Parfum",p:"990.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Le_Male_Elixir_Le_Parfum_-_Eau_de_parfum_ambr_e_aromatique_bois_e.jpg?v=1776902002"},
+            {n:"Born in Roma Intense Uomo 100ML",p:"1,190.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Born_in_Roma_Intense_Uomo_-_Eau_de_Parfum_Intense_100_ML.jpg?v=1776902027"},
+            {n:"Le Beau Paradise Garden Édition Limitée",p:"1,249.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Le_Beau_Paradise_Garden_-_dition_Limit_e.jpg?v=1776902092"},
+            {n:"Scandal pour Homme Absolu 100ML",p:"1,350.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Scandal_pour_Homme_Absolu_-_Parfum_intense_100_ML.jpg?v=1776902116"},
+            {n:"Stronger with You Parfum",p:"1,190.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Stronger_with_You_-_Parfum.jpg?v=1776902139"},
+            {n:"Le Male Elixir Absolu 75ML",p:"1,079.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Le_Male_Elixir_Absolu_Parfum_Intense_75ML.jpg?v=1776902168"},
+            {n:"BOSS The Scent Elixir 100ml",p:"1,190.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/BOSS_The_Scent_Elixir_100ml_eau_de_parfum.jpg?v=1776902196"},
+            {n:"YSL Eau de Parfum 100ML",p:"1,190.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/YVES_SAINT_LAURENT_EAU_DE_PARFUM_100_ML.jpg?v=1776902261"},
+            {n:"JPG Le Beau Flower Edition 125ml",p:"1,249.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Jean_Paul_Gaultier_-_Le_Beau_Flower_Edition_125ml_Eau_de_Parfum.jpg?v=1776902385"},
+            {n:"Stronger With You Sandalwood 100ml",p:"120.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Armani_Beauty-Stronger_With_You_Sandalwood_Eau_de_Parfum_-_100ml.jpg?v=1776902434"},
+            {n:"MYSLF Eau de Parfum 100ML",p:"1,190.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/MYSLF_EAU_DE_PARFUM_100ML.jpg?v=1776902468"},
+            {n:"Arvella The Most Wanted 100ml",p:"1,390.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Arvella_Fragrance_The_Most_Wanted_Parfum_3.4_oz._100ml.jpg?v=1776902510"},
+            {n:"Armani Stronger With You Parfum",p:"1,190.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/ARMANI_Stronger_With_You_Parfum.jpg?v=1776902586"},
+            {n:"Armani Code Men Le Parfum 75ML",p:"1,590.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Armani_Code_Men_Le_Parfum_75Ml.jpg?v=1776902654",zoom:true},
+            {n:"Le Male Le Parfum 125ML",p:"1,250.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Le_Male_Le_Parfum_125_ML.jpg?v=1776902681"}
+        ];
+
+        const slider = document.getElementById('pcSlider');
+        const dots = document.getElementById('pcDots');
+        const container = document.getElementById('pcContainer');
+        let pcCurrent = 0;
+        let pcTotal = 0;
+
+        function buildCard(prod, idx){
+            const pid = 2001 + idx;
+            const safeName = prod.n.replace(/"/g,'&quot;');
+            return ''+
+                '<div class="pc-card">'+
+                  '<div class="pc-frame">'+
+                    '<button class="pc-wish" data-pid="'+pid+'" onclick="event.stopPropagation();window.mwToggleWish&&window.mwToggleWish('+pid+',this)" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>'+
+                    '<img class="pc-img'+(prod.zoom?' pc-zoom':'')+'" src="'+prod.img+'" alt="'+safeName+'" loading="lazy">'+
+                  '</div>'+
+                  '<div class="pc-body">'+
+                    '<p class="pc-name">'+prod.n+'</p>'+
+                    '<p class="pc-price">'+prod.p+'</p>'+
+                    '<button class="pc-bag" onclick="event.stopPropagation();pcAddToBag('+idx+')">Add to Bag</button>'+
+                  '</div>'+
+                '</div>';
+        }
+
+        function buildSlides(){
+            let html = '';
+            for(let i = 0; i < products.length; i += 2){
+                html += '<div class="bs-slide-page pc-slide-page"><div class="bs-slide-grid">';
+                html += buildCard(products[i], i);
+                if(products[i+1]) html += buildCard(products[i+1], i+1);
+                html += '</div></div>';
+            }
+            slider.innerHTML = html;
+            pcTotal = Math.ceil(products.length / 2);
+            dots.innerHTML = '';
+            for(let i = 0; i < pcTotal; i++){
+                const d = document.createElement('div');
+                d.className = 'bs-dot' + (i===0 ? ' active' : '');
+                d.onclick = () => pcGo(i);
+                dots.appendChild(d);
+            }
+        }
+
+        function update(){
+            slider.style.transform = 'translateX(-' + (pcCurrent * 100) + '%)';
+            dots.querySelectorAll('.bs-dot').forEach((d,i) => d.classList.toggle('active', i===pcCurrent));
+        }
+
+        window.pcMove = function(dir){
+            pcCurrent = Math.max(0, Math.min(pcTotal-1, pcCurrent + dir));
+            update();
+        };
+        window.pcGo = function(i){ pcCurrent = i; update(); };
+        window.pcAddToBag = function(idx){
+            const p = products[idx];
+            try {
+                const bag = JSON.parse(localStorage.getItem('mwBag') || '[]');
+                bag.push({id:'pc'+(2000+idx), name:p.n, price:p.p, img:p.img, qty:1});
+                localStorage.setItem('mwBag', JSON.stringify(bag));
+            } catch(e){}
+            if(window.mwToast) window.mwToast();
+        };
+
+        buildSlides();
+        update();
+
+        // touch swipe
+        let sx=0, sy=0, sw=false;
+        container.addEventListener('touchstart', e => { sx=e.touches[0].clientX; sy=e.touches[0].clientY; sw=true; }, {passive:true});
+        container.addEventListener('touchmove', e => {
+            if(!sw) return;
+            if(Math.abs(e.touches[0].clientY - sy) > Math.abs(e.touches[0].clientX - sx)) sw = false;
+        }, {passive:true});
+        container.addEventListener('touchend', e => {
+            if(!sw) return;
+            const diff = sx - e.changedTouches[0].clientX;
+            if(Math.abs(diff) > 50) pcMove(diff > 0 ? 1 : -1);
+            sw = false;
+        }, {passive:true});
+    })();
+
+    // ====== FRENCH AVENUE CAROUSEL ======
+    (function(){
+        const products = [
+            {n:"Liquid Brun",p:"369.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/LIQUID_BRUN.jpg?v=1776903352"},
+            {n:"Aether Extrait de Parfum 100ml",p:"319.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Extrait_de_parfum_Aether_100ml_French_Avenue.jpg?v=1776903352"},
+            {n:"Royal Blend Nero",p:"319.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Royal_Blend_Nero.jpg?v=1776903352"},
+            {n:"Royal Blend Perfume",p:"320.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/ROYAL_BLEND_PERFUME.jpg?v=1776903352"},
+            {n:"Spectre Ghost",p:"290.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/Spectre_Ghost_French_Avenue.jpg?v=1776903352"},
+            {n:"Sultry Woods",p:"319.00 DH",img:"https://cdn.shopify.com/s/files/1/0985/8000/5139/files/SULTRY_WOODS.png?v=1776913935"}
+        ];
+
+        const slider = document.getElementById('faSlider');
+        const dots = document.getElementById('faDots');
+        const container = document.getElementById('faContainer');
+        let faCurrent = 0;
+        let faTotal = 0;
+
+        function buildCard(prod, idx){
+            const pid = 3001 + idx;
+            const safeName = prod.n.replace(/"/g,'&quot;');
+            return ''+
+                '<div class="pc-card">'+
+                  '<div class="pc-frame">'+
+                    '<button class="pc-wish" data-pid="'+pid+'" onclick="event.stopPropagation();window.mwToggleWish&&window.mwToggleWish('+pid+',this)" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>'+
+                    '<img class="pc-img fa-img" src="'+prod.img+'" alt="'+safeName+'" loading="lazy">'+
+                  '</div>'+
+                  '<div class="pc-body">'+
+                    '<p class="pc-name">'+prod.n+'</p>'+
+                    '<p class="pc-price">'+prod.p+'</p>'+
+                    '<button class="pc-bag" onclick="event.stopPropagation();faAddToBag('+idx+')">Add to Bag</button>'+
+                  '</div>'+
+                '</div>';
+        }
+
+        function buildSlides(){
+            let html = '';
+            for(let i = 0; i < products.length; i += 2){
+                html += '<div class="bs-slide-page fa-slide-page pc-slide-page"><div class="bs-slide-grid">';
+                html += buildCard(products[i], i);
+                if(products[i+1]) html += buildCard(products[i+1], i+1);
+                html += '</div></div>';
+            }
+            slider.innerHTML = html;
+            faTotal = Math.ceil(products.length / 2);
+            dots.innerHTML = '';
+            for(let i = 0; i < faTotal; i++){
+                const d = document.createElement('div');
+                d.className = 'bs-dot' + (i === 0 ? ' active' : '');
+                d.onclick = () => faGo(i);
+                dots.appendChild(d);
+            }
+        }
+
+        function update(){
+            slider.style.transform = 'translateX(-' + (faCurrent * 100) + '%)';
+            dots.querySelectorAll('.bs-dot').forEach((d,i)=>{
+                d.classList.toggle('active', i === faCurrent);
+            });
+        }
+        window.faMove = function(dir){
+            faCurrent = Math.max(0, Math.min(faTotal-1, faCurrent + dir));
+            update();
+        };
+        window.faGo = function(i){ faCurrent = i; update(); };
+        window.faAddToBag = function(idx){
+            const p = products[idx];
+            try {
+                const bag = JSON.parse(localStorage.getItem('mwBag') || '[]');
+                const existing = bag.find(x => x.id === 'fa' + idx);
+                if(existing) existing.qty = (existing.qty || 1) + 1;
+                else bag.push({id:'fa'+idx, name:p.n, price:p.p, img:p.img, qty:1});
+                localStorage.setItem('mwBag', JSON.stringify(bag));
+                if(window.mwUpdateBagBadge) window.mwUpdateBagBadge();
+                if(window.mwShowToast) window.mwShowToast('Added to bag!');
+            } catch(e){}
+        };
+
+        buildSlides();
+
+        let sx = 0, sw = false;
+        container.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sw = true; }, {passive:true});
+        container.addEventListener('touchend', e => {
+            if(!sw) return;
+            const diff = sx - e.changedTouches[0].clientX;
+            if(Math.abs(diff) > 50) faMove(diff > 0 ? 1 : -1);
+            sw = false;
+        }, {passive:true});
+    })();
+
+    // ====== PILL HANDLERS ======
+    (function(){
+        const main = document.getElementById('mainPills');
+        const sub = document.getElementById('perfumesSubPills');
+        const empty = document.getElementById('saleEmpty');
+        const newSection = document.querySelector('.new-arrivals-section');
+        const pcSection = document.getElementById('pc-section');
+        const faSection = document.getElementById('fa-section');
+        if(!main) return;
+
+        function applyView(){
+            const activeMain = main.querySelector('.pill--active');
+            const cat = activeMain ? activeMain.dataset.cat : 'new';
+            const activeSub = sub ? sub.querySelector('.pill--active') : null;
+            const subKey = activeSub ? activeSub.dataset.perfume : null;
+
+            if(sub) sub.hidden = (cat !== 'perfumes');
+            if(empty) empty.hidden = (cat !== 'sale');
+            document.body.classList.toggle('sale-mode', cat === 'sale');
+
+            const showPc = (cat === 'perfumes' && subKey === 'complet');
+            const showFa = (cat === 'perfumes' && subKey === 'french-avenue');
+            if(pcSection) pcSection.hidden = !showPc;
+            if(faSection) faSection.hidden = !showFa;
+            if(newSection) newSection.style.display = (showPc || showFa || cat === 'sale') ? 'none' : '';
+            if(cat === 'sale' && newSection) newSection.style.display = '';
+        }
+
+        main.querySelectorAll('.pill').forEach(function(p){
+            p.addEventListener('click', function(){
+                main.querySelectorAll('.pill').forEach(x => x.classList.remove('pill--active'));
+                p.classList.add('pill--active');
+                applyView();
+            });
+        });
+        if(sub){
+            sub.querySelectorAll('.pill').forEach(function(p){
+                p.addEventListener('click', function(){
+                    sub.querySelectorAll('.pill').forEach(x => x.classList.remove('pill--active'));
+                    p.classList.add('pill--active');
+                    applyView();
+                });
+            });
+        }
+    })();
+    </script>
+<script src="assets/products.js"></script>
+<script src="assets/store.js"></script>
+</body>
+</html>

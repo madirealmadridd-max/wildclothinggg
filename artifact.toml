@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "WILD CLOTHING"
+version = "1.0.0"
+id = "artifacts/wild-clothing"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18406
+
+[services.development]
+run = "pnpm --filter @workspace/wild-clothing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/wild-clothing", "run", "build" ]
+publicDir = "artifacts/wild-clothing/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18406"
+BASE_PATH = "/"

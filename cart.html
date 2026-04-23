@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart — WILD CLOTHING</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .cart-page { padding-top: calc(var(--header-height) + 12px); padding-bottom: calc(var(--bottom-nav-height) + 32px); min-height:100vh; }
+  .cart-head { padding: 12px 16px 16px; text-align:center; border-bottom:1px solid #f0eae6; }
+  .cart-head h1 { margin:0; font-size:1.3rem; letter-spacing:1.5px; color:var(--color-text); }
+  .cart-head p  { margin:4px 0 0; font-size:.78rem; color:var(--color-muted); }
+
+  .cart-list { padding: 8px 12px; }
+  .cart-row { display:flex; gap:12px; padding:14px 4px; border-bottom:1px solid #f3eee9; }
+  .cart-row__img { width:84px; height:108px; flex-shrink:0; background:#f5f5f5; border-radius:8px; overflow:hidden; }
+  .cart-row__img img { width:100%; height:100%; object-fit:cover; }
+  .cart-row__body { flex:1; display:flex; flex-direction:column; justify-content:space-between; min-width:0; }
+  .cart-row__name { margin:0; font-size:.88rem; font-weight:600; color:var(--color-text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .cart-row__price { margin:2px 0 0; font-size:.8rem; color:var(--color-muted); }
+  .cart-row__bottom { display:flex; align-items:center; justify-content:space-between; }
+  .cart-qty { display:flex; align-items:center; gap:8px; border:1px solid #ddd; border-radius:20px; padding:2px 6px; }
+  .cart-qty button { width:24px; height:24px; border:none; background:transparent; font-size:1rem; color:var(--color-text); cursor:pointer; }
+  .cart-qty span  { min-width:18px; text-align:center; font-size:.85rem; font-weight:600; }
+  .cart-row__remove { background:transparent; border:none; color:#a55; font-size:.75rem; cursor:pointer; padding:4px 6px; }
+
+  .cart-empty { text-align:center; padding:60px 24px; color:var(--color-muted); }
+  .cart-empty svg { display:inline-block; margin-bottom:14px; }
+  .cart-empty a { display:inline-block; margin-top:14px; padding:10px 22px; background:#291409; color:#FEFCFB; text-decoration:none; border-radius:24px; font-size:.78rem; font-weight:700; letter-spacing:.5px; }
+
+  .cart-summary { margin: 16px 12px 0; padding:16px; border:1px solid #ece6e0; border-radius:12px; background:#fff; }
+  .cart-summary__row { display:flex; justify-content:space-between; padding:6px 0; font-size:.85rem; color:var(--color-text); }
+  .cart-summary__row--total { font-size:1rem; font-weight:700; padding-top:12px; margin-top:8px; border-top:1px solid #f0eae6; }
+  .cart-actions { padding: 14px 12px; }
+  .cart-btn { display:block; width:100%; padding:14px; text-align:center; text-decoration:none; font-size:.85rem; font-weight:700; letter-spacing:1px; border-radius:6px; cursor:pointer; border:none; }
+  .cart-btn--checkout { background:#291409; color:#FEFCFB; margin-bottom:10px; }
+  .cart-btn--continue { background:transparent; color:#291409; border:1px solid #291409; }
+
+  .checkout-modal { position:fixed; inset:0; background:rgba(0,0,0,.5); display:none; align-items:center; justify-content:center; z-index:1000; padding:20px; }
+  .checkout-modal.show { display:flex; }
+  .checkout-card { background:#FEFCFB; padding:28px 24px; border-radius:14px; max-width:340px; text-align:center; }
+  .checkout-card svg { color:#2a8c4a; margin-bottom:12px; }
+  .checkout-card h3 { margin:0 0 8px; color:var(--color-text); font-size:1.1rem; }
+  .checkout-card p  { margin:0 0 20px; color:var(--color-muted); font-size:.85rem; }
+  .checkout-card button { padding:10px 22px; background:#291409; color:#FEFCFB; border:none; border-radius:24px; font-size:.78rem; font-weight:700; letter-spacing:.5px; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="app" data-shell="cart" data-nav="">
+  <main class="page cart-page">
+    <header class="cart-head">
+      <h1>YOUR CART</h1>
+      <p id="cartSubhead">0 items</p>
+    </header>
+    <div id="cartContent"></div>
+  </main>
+</div>
+
+<div class="checkout-modal" id="checkoutModal">
+  <div class="checkout-card">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <h3>Order placed!</h3>
+    <p>Thank you. We've received your order and will be in touch shortly.</p>
+    <button onclick="closeCheckout()">Continue shopping</button>
+  </div>
+</div>
+
+<script src="assets/products.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/shell.js"></script>
+<script>
+  function renderCart(){
+    const root = document.getElementById('cartContent');
+    const bag = window.mwGetBag();
+    const ids = Object.keys(bag);
+    document.getElementById('cartSubhead').textContent = window.mwBagCount() + ' item' + (window.mwBagCount()===1?'':'s');
+    if (ids.length === 0){
+      root.innerHTML = `<div class="cart-empty">
+        <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#bbb" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <p>Your cart is empty.</p>
+        <a href="shop.html">Start shopping</a>
+      </div>`;
+      return;
+    }
+    const rows = ids.map(id => {
+      const it = bag[id];
+      return `<div class="cart-row">
+        <div class="cart-row__img"><img src="${it.img}" alt="${it.name}" onerror="this.style.background='#eee'"></div>
+        <div class="cart-row__body">
+          <div>
+            <p class="cart-row__name">${it.name}</p>
+            <p class="cart-row__price">${it.price}</p>
+          </div>
+          <div class="cart-row__bottom">
+            <div class="cart-qty">
+              <button onclick="mwBagQty('${id}',-1);renderCart()">−</button>
+              <span>${it.qty}</span>
+              <button onclick="mwBagQty('${id}',1);renderCart()">+</button>
+            </div>
+            <button class="cart-row__remove" onclick="mwBagRemove('${id}');renderCart()">Remove</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+    const total = window.mwBagTotal();
+    root.innerHTML = `
+      <div class="cart-list">${rows}</div>
+      <div class="cart-summary">
+        <div class="cart-summary__row"><span>Subtotal</span><span>${total.toFixed(2)} DH</span></div>
+        <div class="cart-summary__row"><span>Shipping</span><span>Calculated at checkout</span></div>
+        <div class="cart-summary__row cart-summary__row--total"><span>Total</span><span>${total.toFixed(2)} DH</span></div>
+      </div>
+      <div class="cart-actions">
+        <button class="cart-btn cart-btn--checkout" id="checkoutBtn">CHECKOUT</button>
+        <a class="cart-btn cart-btn--continue" href="shop.html">Continue Shopping</a>
+      </div>`;
+    document.getElementById('checkoutBtn').addEventListener('click', doCheckout);
+  }
+
+  function doCheckout(){
+    document.getElementById('checkoutModal').classList.add('show');
+    // Clear bag
+    Object.keys(window.mwGetBag()).forEach(id => window.mwBagRemove(id));
+    renderCart();
+  }
+  function closeCheckout(){
+    document.getElementById('checkoutModal').classList.remove('show');
+    location.href = 'shop.html';
+  }
+  window.closeCheckout = closeCheckout;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCart();
+    if (location.hash === '#checkout' && window.mwBagCount() > 0) {
+      setTimeout(doCheckout, 300);
+    }
+  });
+</script>
+</body>
+</html>
